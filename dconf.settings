@@ -16,8 +16,8 @@ height=714
 width=1440
 
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/com/github/stunkymonkey/nautilus-open-any-terminal/terminal'
-saved-view='/com/github/stunkymonkey/nautilus-open-any-terminal/terminal'
+saved-pathbar-path='/org/gnome/software/'
+saved-view='/org/gnome/software/'
 show-warning=false
 window-height=818
 window-is-maximized=false
@@ -798,7 +798,7 @@ size=(850, 695)
 state=87168
 
 [org/gnome/control-center]
-last-panel='display'
+last-panel='keyboard'
 window-state=(1104, 720, true)
 
 [org/gnome/desktop/a11y]
@@ -2054,7 +2054,7 @@ name='GNOME Screenshot'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1]
 binding='<Super>Return'
-command='kitty --single-instance'
+command='kitty -1 -T kitty'
 name='Simple Terminal'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10]
@@ -2121,7 +2121,6 @@ command='picgo-upload'
 name='PicGo Upload'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom25]
-binding='<Super>backslash'
 command='xunmap'
 name='XUnmap'
 
@@ -2145,7 +2144,6 @@ command='fan.boostswitch'
 name='ASUS Fan Control'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom31]
-binding='<Super>semicolon'
 command='xscrsaver sudo glances'
 name='XScreenSaver'
 
@@ -2165,7 +2163,6 @@ command='gnome-text-editor -n'
 name='Text Editor'
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7]
-binding='<Super>BackSpace'
 command='xkill'
 name='XKill'
 
@@ -2664,10 +2661,11 @@ toggle-quick-settings=@as []
 locations=[<(uint32 2, <('Beijing', 'ZBAA', true, [(0.69696814214530467, 2.0295270260429752)], [(0.69689057971334611, 2.0313596217575696)])>)>]
 
 [org/gnome/software]
+allow-updates=false
 check-timestamp=int64 1664500951
 download-updates=false
 first-run=false
-flatpak-purge-timestamp=int64 1752971004
+flatpak-purge-timestamp=int64 1756257225
 install-timestamp=int64 1750499078
 online-updates-timestamp=int64 1664501401
 update-notification-timestamp=int64 1750499178
@@ -3070,6 +3068,20 @@ fullscreen=false
 height=uint32 803
 maximized=false
 width=uint32 1113
+
+[sm/puri/Chatty]
+blur-idle-buddies=true
+clear-out-stuck-sms=false
+indicate-unknown-contacts=true
+mam-enabled=true
+message-carbons=false
+purple-enabled=true
+render-attachments=true
+request-sms-delivery-reports=true
+return-sends-message=false
+send-receipts=false
+send-typing=false
+strip-url-tracking-id=false
 
 [system/locale]
 region='zh_CN.UTF-8'

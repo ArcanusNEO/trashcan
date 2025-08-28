@@ -130,7 +130,6 @@ archlinux-keyring
 ardour
 arduino-cli
 arduino-fwuploader
-arduino-ide
 arduino-language-server
 argbash
 argon2
@@ -192,7 +191,7 @@ avogadro-crystals
 avogadro-fragments
 avogadro-molecules
 avogadrolibs
-avogadrolibs-qt5
+avogadrolibs-qt
 avr-binutils
 avr-gcc
 avr-libc
@@ -334,6 +333,7 @@ cairomm-docs
 calendarsupport
 calf
 calibre
+callaudiod
 calligra
 cantarell-fonts
 cantor
@@ -361,12 +361,12 @@ cdparanoia
 cdrdao
 cdrtools
 celluloid
-cervisia
 cfitsio
 cfr
 cgdb
 chafa
 charls
+chatty
 check
 check-docs
 cheese
@@ -447,6 +447,7 @@ cool-retro-term
 coordgen
 coreutils
 cowsay
+cowsql
 cpio
 cppcheck
 cppdap
@@ -488,10 +489,6 @@ dav1d
 db
 db5.3
 dbeaver
-dbeaver-plugin-apache-poi
-dbeaver-plugin-batik
-dbeaver-plugin-office
-dbeaver-plugin-svg-format
 dblatex
 dbus
 dbus-broker
@@ -505,6 +502,7 @@ dcmtk
 dconf
 dconf-editor
 ddcutil
+ddm
 ddrescue
 debian-archive-keyring
 debian-ports-archive-keyring
@@ -512,6 +510,7 @@ debootstrap
 debugedit
 debuginfod
 decibels
+deepin-desktop-base
 default-cursors
 dejagnu
 deno
@@ -594,7 +593,6 @@ dpf-plugins-vst3
 dpkg
 dqlite
 draco
-dracut
 dragon
 dragonfly-reverb-clap
 dragonfly-reverb-lv2
@@ -609,6 +607,12 @@ drumkv1-standalone
 drumstick
 dscanner
 dtc
+dtk6core
+dtk6declarative
+dtk6gui
+dtk6log
+dtk6systemsettings
+dtkcommon
 dtools
 dub
 duf
@@ -647,8 +651,10 @@ eglexternalplatform
 eigen
 electron
 electron27
+electron34
 electron35
 electron36
+electron37
 element
 elementary-icon-theme
 elfutils
@@ -745,6 +751,7 @@ fcgiwrap
 fcrackzip
 fd
 fdupes
+feedbackd
 feeluown
 feeluown-bilibili
 feeluown-kuwo
@@ -784,6 +791,7 @@ flim
 flint
 flite
 fltk
+fltk1.3
 fluidsynth
 fmt
 folks
@@ -805,7 +813,6 @@ francis
 freealut
 freecell-solver
 freeglut
-freeimage
 freepats-general-midi
 freeplane
 freerdp
@@ -1044,6 +1051,7 @@ gnome-browser-connector
 gnome-builder
 gnome-calculator
 gnome-calendar
+gnome-calls
 gnome-characters
 gnome-chess
 gnome-clocks
@@ -1165,6 +1173,7 @@ gsettings-system-schemas
 gsfonts
 gsl
 gsm
+gsmartcontrol
 gsound
 gspell
 gssdp
@@ -1373,6 +1382,7 @@ haskell-fgl
 haskell-file-embed
 haskell-filemanip
 haskell-filepattern
+haskell-filtrable
 haskell-fingertree
 haskell-floskell
 haskell-fmlist
@@ -1424,11 +1434,11 @@ haskell-hls-graph
 haskell-hls-hlint-plugin
 haskell-hls-module-name-plugin
 haskell-hls-ormolu-plugin
+haskell-hls-overloaded-record-dot-plugin
 haskell-hls-plugin-api
 haskell-hls-pragmas-plugin
 haskell-hls-qualify-imported-names-plugin
 haskell-hls-refactor-plugin
-haskell-hls-refine-imports-plugin
 haskell-hls-rename-plugin
 haskell-hls-retrie-plugin
 haskell-hls-splice-plugin
@@ -1472,6 +1482,7 @@ haskell-implicit-hie-cradle
 haskell-indexed-profunctors
 haskell-indexed-traversable
 haskell-indexed-traversable-instances
+haskell-integer-conversion
 haskell-integer-logarithms
 haskell-invariant
 haskell-iproute
@@ -1496,8 +1507,6 @@ haskell-logict
 haskell-lpeg
 haskell-lsp
 haskell-lsp-types
-haskell-lsp-types1.4
-haskell-lsp1.4
 haskell-lua
 haskell-lucid
 haskell-math-functions
@@ -1551,6 +1560,7 @@ haskell-pretty-show
 haskell-pretty-simple
 haskell-prettyprinter
 haskell-prettyprinter-ansi-terminal
+haskell-prettyprinter-compat-ansi-wl-pprint
 haskell-primes
 haskell-primitive
 haskell-primitive-extras
@@ -1566,6 +1576,8 @@ haskell-recv
 haskell-refact
 haskell-refinery
 haskell-reflection
+haskell-regex
+haskell-regex-applicative
 haskell-regex-base
 haskell-regex-pcre
 haskell-regex-tdfa
@@ -1573,6 +1585,7 @@ haskell-repline
 haskell-resourcet
 haskell-retrie
 haskell-rope-utf16-splay
+haskell-row-types
 haskell-rvar
 haskell-safe
 haskell-safe-exceptions
@@ -1616,6 +1629,7 @@ haskell-terminal-size
 haskell-texmath
 haskell-text-conversions
 haskell-text-icu
+haskell-text-iso8601
 haskell-text-manipulate
 haskell-text-rope
 haskell-text-short
@@ -1628,6 +1642,7 @@ haskell-these
 haskell-tidal
 haskell-tidal-link
 haskell-time-compat
+haskell-time-locale-compat
 haskell-time-manager
 haskell-tls
 haskell-toml-parser
@@ -1791,6 +1806,9 @@ imath
 iml
 imlib2
 incidenceeditor
+incus
+incus-tools
+incus-ui
 indent
 inetutils
 infamousplugins
@@ -1996,14 +2014,12 @@ kdepim-runtime
 kdesdk-kio
 kdesdk-thumbnailers
 kdesu
-kdesu5
 kdevelop
 kdevelop-meta
 kdevelop-php
 kdevelop-python
 kdf
 kdiagram
-kdiagram5
 kdialog
 kdiamond
 kdiff3
@@ -2052,7 +2068,6 @@ kimageannotator
 kimageformats
 kimagemapeditor
 kimap
-kinit
 kio
 kio-admin
 kio-extras
@@ -2162,7 +2177,6 @@ kpimtextedit
 kpipewire
 kpkpass
 kplotting
-kplotting5
 kpmcore
 kpty
 kpty5
@@ -2210,7 +2224,6 @@ kturtle
 kubrick
 kunifiedpush
 kunitconversion
-kunitconversion5
 kuserfeedback
 kvantum
 kvantum-qt5
@@ -2561,6 +2574,7 @@ libclapper
 libclapper-gtk
 libclc
 libcloudproviders
+libcmatrix
 libcmis
 libcolord
 libconfig
@@ -2627,6 +2641,7 @@ libfbclient
 libfdk-aac
 libffado
 libffi
+libfido2
 libfishsound
 libfm
 libfm-extra
@@ -2658,6 +2673,7 @@ libgit2-glib-docs
 libglacierapp
 libglvnd
 libgme
+libgmobile
 libgnome-games-support
 libgnome-games-support-2
 libgnome-keyring
@@ -2913,7 +2929,6 @@ libretro-parallel-n64
 libretro-picodrive
 libretro-play
 libretro-ppsspp
-libretro-retrodream
 libretro-sameboy
 libretro-scummvm
 libretro-shaders-slang
@@ -3208,7 +3223,6 @@ lxappearance-gtk3
 lxappearance-obconf-gtk3
 lxc
 lxcfs
-lxd
 lxde-common
 lxde-icon-theme
 lxdm-gtk3
@@ -3263,6 +3277,7 @@ man-db
 man-pages
 man-pages-zh_cn
 mangohud
+manifold
 marble
 marble-common
 mariadb
@@ -3391,6 +3406,7 @@ mxml
 mxml-docs
 mypaint-brushes1
 mypy
+namcap
 nano
 nanobind
 nasm
@@ -3571,7 +3587,6 @@ openvdb
 openvpn
 openvr
 openxr
-opl-synth
 opnplug-lv2
 opnplug-standalone
 opnplug-vst
@@ -3867,9 +3882,6 @@ perl-yaml-pp
 perl-yaml-syck
 perl-yaml-tiny
 phodav
-phonon-qt5
-phonon-qt5-gstreamer
-phonon-qt5-vlc
 phonon-qt6
 phonon-qt6-vlc
 php
@@ -3977,10 +3989,10 @@ pulse-native-provider
 pulseaudio-qt
 pulsemixer
 purpose
-purpose5
 pvoc
 pwgen
 pwru
+pyalpm
 pybind11
 pypy
 pypy3
@@ -4065,7 +4077,6 @@ python-cbor2
 python-cerberus
 python-certifi
 python-cffi
-python-cgi
 python-chardet
 python-charset-normalizer
 python-cheroot
@@ -4077,7 +4088,6 @@ python-cloudpickle
 python-colorama
 python-colored-traceback
 python-colorlog
-python-colorthief
 python-comm
 python-commonmark
 python-configobj
@@ -4096,6 +4106,7 @@ python-cssselect2
 python-cuda
 python-cuda-bindings
 python-cuda-core
+python-cuda-pathfinder
 python-cvxopt
 python-cycler
 python-cypari2
@@ -4148,7 +4159,6 @@ python-evdev
 python-eventlet
 python-executing
 python-faker
-python-fast-colorthief
 python-fastapi
 python-fastbencode
 python-fastjsonschema
@@ -4284,6 +4294,7 @@ python-kivy
 python-kiwisolver
 python-krb5
 python-kubernetes
+python-langdetect
 python-lark-parser
 python-lazy-loader
 python-lazy-object-proxy
@@ -4481,6 +4492,7 @@ python-pyjwt
 python-pykakasi
 python-pylev
 python-pyliblo
+python-pyliblo3
 python-pylint
 python-pylint-plugin-utils
 python-pylint-venv
@@ -4638,6 +4650,7 @@ python-sqlparse
 python-srt
 python-srt_equalizer
 python-stack-data
+python-standard-cgi
 python-starlette
 python-statsmodels
 python-stevedore
@@ -4946,7 +4959,6 @@ quadrapassel
 quazip-qt5
 quazip-qt6
 quilt
-qwlroots
 qxgedit
 qxlsx
 qxmpp
@@ -5018,7 +5030,6 @@ roc-toolkit
 rocalution
 rocblas
 rocfft
-rocm-clang-ocl
 rocm-cmake
 rocm-core
 rocm-dbgapi
@@ -5286,6 +5297,7 @@ sndio
 sniffnet
 socat
 sof-firmware
+sofia-sip
 solid
 solid5
 songrec
@@ -5654,6 +5666,7 @@ tree-sitter-query
 tree-sitter-rust
 tree-sitter-vim
 tree-sitter-vimdoc
+treeland
 ts-node
 tslib
 ttc-iosevka
@@ -5717,7 +5730,6 @@ ttf-fira-code
 ttf-fira-mono
 ttf-fira-sans
 ttf-firacode-nerd
-ttf-font-awesome
 ttf-gentium-plus
 ttf-go-nerd
 ttf-hack
@@ -5796,6 +5808,7 @@ uchardet
 udftools
 udisks2
 udisks2-docs
+udp2raw
 ueberzug
 ugrep
 uhttpmock
@@ -5872,6 +5885,7 @@ vlc-cli
 vlc-gui-qt
 vlc-plugin-a52dec
 vlc-plugin-alsa
+vlc-plugin-archive
 vlc-plugin-dav1d
 vlc-plugin-dbus
 vlc-plugin-dbus-screensaver
@@ -5884,6 +5898,7 @@ vlc-plugin-journal
 vlc-plugin-jpeg
 vlc-plugin-lua
 vlc-plugin-mpg123
+vlc-plugin-ogg
 vlc-plugin-opus
 vlc-plugin-png
 vlc-plugin-pulse
@@ -5942,7 +5957,6 @@ wayland
 wayland-protocols
 wayland-utils
 waylandpp
-waylib
 waypipe
 wayvnc
 wcslib
@@ -5981,9 +5995,11 @@ wl-clipboard
 wlr-protocols
 wlroots0.17
 wlroots0.18
+wlroots0.19
 wmctrl
 wmenu
 woff2
+woff2-font-awesome
 wofi
 wolf-shaper-dssi
 wolf-shaper-lv2
@@ -6049,7 +6065,6 @@ xf86-video-amdgpu
 xf86-video-ati
 xf86-video-dummy
 xf86-video-fbdev
-xf86-video-intel
 xf86-video-nouveau
 xf86-video-qxl
 xf86-video-vesa

@@ -3,7 +3,6 @@ adspower-global
 afdko
 aic94xx-firmware
 alist
-amduprof
 android-apktool
 android-sdk
 android-sdk-build-tools
@@ -28,7 +27,6 @@ automoc4
 baidunetdisk-bin
 balena-etcher
 bfg
-bilibili-bin
 boca
 brother-cups-wrapper-common
 brother-lpr-drivers-common
@@ -88,6 +86,7 @@ fortune-mod-matrix
 fortune-mod-zh
 foxdot
 freac
+freeimage
 fsearch
 fswatch
 fvm
@@ -95,8 +94,6 @@ fxload
 fzf-extras
 ganache-cli
 gatling
-gcc13
-gcc13-libs
 gcc49
 gcc8
 gcc8-libs
@@ -107,12 +104,10 @@ geekbench
 ghidra-desktop
 gklib
 gnirehtet
-gnome-extra-meta
 gnome-games-meta
 gnome-icon-theme
 gnome-icon-theme-extras
 gnome-icon-theme-symbolic
-gnome-meta
 gnome-mime-data
 gnome-session-properties
 gnome-shell-extension-alphabetical-grid-extension-git
@@ -161,15 +156,14 @@ ir.lv2
 istyle-verilog-formatter-git
 jdk-lts
 jdk-lts-doc
-jdk11
 jdk8
 jdtls
 jellyfin-media-player
 jellyfish
-jre11
 jre8
 kcontacts5
 kddockwidgets-qt6
+kdesu5
 kdocker
 kfilemetadata5
 kitemmodels5
@@ -179,7 +173,9 @@ komorebi
 kotlin-language-server
 kpeople5
 kpimtextedit5
+kplotting5
 ktextaddons5
+kunitconversion5
 latex2rtf
 lemminx
 lerc
@@ -265,7 +261,6 @@ odin4-cli
 oh-my-zsh-git
 onlyoffice-bin
 openssl-1.0
-opera-ffmpeg-codecs
 osl
 osmid
 otf-smiley-sans-bin
@@ -281,6 +276,8 @@ patool
 payload-dumper-go
 peazip
 perl-file-next
+phonon-qt5
+phonon-qt5-gstreamer
 phpactor
 pinta
 pix2tex
@@ -307,6 +304,7 @@ python-cached-property
 python-cffsubr
 python-chex
 python-cloudscraper
+python-colorthief
 python-compreffor
 python-convertdate
 python-cu2qu
@@ -319,6 +317,7 @@ python-einops
 python-einx
 python-entmax
 python-etils
+python-fast-colorthief
 python-flax
 python-funcy
 python-gbinder
@@ -332,7 +331,6 @@ python-jax
 python-jaxlib
 python-js2py
 python-jsmin
-python-langdetect
 python-lsp-isort
 python-lsp-ruff
 python-lzfse
@@ -410,13 +408,13 @@ remmina-plugin-teamviewer
 remmina-plugin-url
 responder
 rig
+rocm-clang-ocl
 rog-control-center
 ruby-backport
 ruby-e2mmap
 ruffle-nightly-bin
 rustc-demangle
 sdcardformatter
-secure-delete
 see-git
 seer-gdb
 shine
