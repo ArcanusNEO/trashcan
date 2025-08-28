@@ -16,8 +16,8 @@ height=714
 width=1440
 
 [ca/desrt/dconf-editor]
-saved-pathbar-path='/org/gnome/desktop/interface/accent-color'
-saved-view='/org/'
+saved-pathbar-path='/org/gnome/software/'
+saved-view='/org/gnome/software/'
 show-warning=false
 window-height=819
 window-is-maximized=false
@@ -741,7 +741,7 @@ tab-width=2
 [org/gnome/calculator]
 accuracy=9
 angle-units='degrees'
-base=10
+base=16
 button-mode='programming'
 number-format='fixed'
 refresh-interval=604800
@@ -782,7 +782,7 @@ size=(962, 792)
 state=87168
 
 [org/gnome/control-center]
-last-panel='system'
+last-panel='bluetooth'
 window-state=(1205, 967, false)
 
 [org/gnome/desktop/a11y]
@@ -2021,7 +2021,7 @@ visible-columns=['post-time', 'duration', 'album', 'artist']
 
 [org/gnome/settings-daemon/plugins/color]
 night-light-enabled=false
-night-light-last-coordinates=(34.966086432052911, -116.419389)
+night-light-last-coordinates=(34.959628085528699, -116.419389)
 night-light-schedule-automatic=false
 
 [org/gnome/settings-daemon/plugins/media-keys]
@@ -2665,10 +2665,11 @@ toggle-quick-settings=@as []
 locations=[<(uint32 2, <('Beijing', 'ZBAA', true, [(0.69696814214530467, 2.0295270260429752)], [(0.69689057971334611, 2.0313596217575696)])>)>]
 
 [org/gnome/software]
+allow-updates=false
 check-timestamp=int64 1751690545
 download-updates=false
 first-run=false
-flatpak-purge-timestamp=int64 1755561705
+flatpak-purge-timestamp=int64 1756345390
 
 [org/gnome/solitaire/window-state]
 fullscreen=false
