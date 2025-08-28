@@ -33,7 +33,7 @@ brother-lpr-drivers-common
 brunsli
 burpsuite
 cajviewer
-carbonyl-bin
+carbonyl
 celt
 cf-tool
 charles
@@ -453,7 +453,7 @@ tencent-docs-bin
 terminus-font-ttf
 texmacs
 tor-browser-bin
-tree-sitter-typescript-git
+tree-sitter-typescript
 treeline
 tsukimi-bin
 ttf-apple-emoji

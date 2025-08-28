@@ -375,7 +375,7 @@ cantor
 capnproto
 caps
 capstone
-carbonyl-bin
+carbonyl
 cardinal-clap
 cardinal-data
 cardinal-lv2
@@ -6119,7 +6119,7 @@ tree-sitter-markdown
 tree-sitter-python
 tree-sitter-query
 tree-sitter-rust
-tree-sitter-typescript-git
+tree-sitter-typescript
 tree-sitter-vim
 tree-sitter-vimdoc
 treeland
