@@ -8,4 +8,4 @@ Target=cockpit
 Description=Purging login shell messages...
 Depends=coreutils
 When=PostTransaction
-Exec=/bin/rm -f /etc/issue.d/cockpit.issue /etc/motd.d/cockpit 
+Exec=/bin/rm -f -- /etc/issue.d/cockpit.issue /etc/motd.d/cockpit 
