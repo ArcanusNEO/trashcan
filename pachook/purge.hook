@@ -1,12 +1,11 @@
 [Trigger]
 Operation=Install
 Operation=Upgrade
-Operation=Remove
 Type=Package
 Target=*
 
 [Action]
-Description=Syncing...
+Description=Purging unwanted files...
 Depends=coreutils
 When=PostTransaction
-Exec=/usr/bin/sync
+Exec=/bin/rm -rf -- /usr/lib/nautilus/extensions-4/libterminal-nautilus.so
