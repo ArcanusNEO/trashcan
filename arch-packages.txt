@@ -537,6 +537,7 @@ cvc4
 cyrus-sasl-gssapi
 cython
 d-spy
+daemon
 dart
 dash
 dav1d
@@ -1037,6 +1038,7 @@ gcc
 gcc-ada
 gcc-d
 gcc-fortran
+gcc-gcobol
 gcc-libs
 gcc-objc
 gcc-rust
@@ -4214,6 +4216,7 @@ pngquant
 pnpm
 po4a
 poco
+pod2man
 podman
 podman-compose
 podman-docker
@@ -5112,6 +5115,7 @@ python-wheel
 python-wn
 python-wrapt
 python-wsproto
+python-wxpython
 python-x-transformers
 python-xattr
 python-xcffib
@@ -5857,6 +5861,7 @@ systemd-boot-pacman-hook
 systemd-libs
 systemd-resolvconf
 systemd-sysvcompat
+systemd-tests
 systemd-ukify
 t1lib
 t1utils
