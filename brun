@@ -1,2 +1,2 @@
 #!/bin/sh
-setsid --fork nohup "$@" >/dev/null 2>&1 & disown
+setsid --fork -- nohup -- "$@" >/dev/null 2>&1 & disown
