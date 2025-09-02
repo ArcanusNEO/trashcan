@@ -41,7 +41,7 @@ alias mkddir='mkdir Applications Comics Desktop Documents Downloads Games Librar
 alias sudo='sudo '
 alias srun='run0 --background="" '
 alias nvrun='nvrun '
-alias brun='daemon '
+alias brun='brun '
 alias cls='printf "\033[2J\033[3J\033[1;1H"'
 alias load.aocc='module load aocc && module load aocl-aocc'
 alias unload.aocc='module unload aocc; module unload aocl-aocc'
