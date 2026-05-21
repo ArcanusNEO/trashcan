@@ -2,8 +2,8 @@
 # Start/stop/restart the emacs daemon.
 
 . /etc/profile
-if [ -r ~/.bashrc ]; then
-  . ~/.bashrc
+if [ -r ~/."${SHELL##*/}"rc ]; then
+  . ~/."${SHELL##*/}"rc
 fi
 unset XDG_RUNTIME_DIR
 
