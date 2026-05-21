@@ -1,0 +1,6 @@
+#!/bin/sh
+while true; do 
+  xclose JavaEmbeddedFrame && exit 0
+  sleep 1
+done & 
+/usr/lib/FinalShell/bin/FinalShell

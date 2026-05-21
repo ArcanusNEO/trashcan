@@ -1,0 +1,13 @@
+[Unit]
+Description=The steam daemon
+BindsTo=graphical-session.target
+After=network-online.target nftables.service iptables.service graphical-session.target xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/steam-native
+Restart=on-abnormal
+RestartSec=3
+
+[Install]
+WantedBy=graphical-session.target

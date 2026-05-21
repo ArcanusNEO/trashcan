@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=gnome-shell-extension-system-monitor*
+
+[Action]
+Description=Patching to display correct cpu frequency...
+Depends=patch
+When=PostTransaction
+Exec=/usr/bin/patch -d'/usr/share/gnome-shell/extensions/system-monitor-next@paradoxxx.zero.gmail.com' -Np0 -i'/usr/local/src/system-monitor-max-cpufreq.patch'

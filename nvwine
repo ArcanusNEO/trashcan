@@ -1,0 +1,4 @@
+#!/bin/sh
+export WINEARCH="${WINEARCH-win64}"
+export WINEPREFIX="${WINEPREFIX-$HOME/wine/64/default}"
+exec /usr/local/bin/nvrun /usr/bin/wine "$@"

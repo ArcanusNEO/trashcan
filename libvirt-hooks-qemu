@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# IMPORTANT: Change the "VM NAME" string to match your actual VM Name.
+# In order to create rules to other VMs, just duplicate the below block and configure
+# it accordingly.
+if [[ "${1}" = "Microsoft_Windows_10_LTSC" ]]; then
+
+  # Update the following variables to fit your setup
+  GUEST_IP=192.168.122.5
+  GUEST_PORT=22
+  HOST_PORT=10022
+
+  if [[ "${2}" = "stopped" ]] || [[ "${2}" = "reconnect" ]]; then
+    /sbin/iptables -D FORWARD -o virbr0 -p tcp -d $GUEST_IP --dport $GUEST_PORT -j ACCEPT
+    /sbin/iptables -D FORWARD -o virbr0 -p udp -d $GUEST_IP --dport $GUEST_PORT -j ACCEPT
+    /sbin/iptables -D FORWARD -o virbr0 -p icmp -d $GUEST_IP -j ACCEPT
+    /sbin/iptables -t nat -D PREROUTING -p tcp --dport $HOST_PORT -j DNAT --to $GUEST_IP:$GUEST_PORT
+    /sbin/iptables -t nat -D PREROUTING -p udp --dport $HOST_PORT -j DNAT --to $GUEST_IP:$GUEST_PORT
+  fi
+  if [[ "${2}" = "start" ]] || [[ "${2}" = "reconnect" ]]; then
+    /sbin/iptables -I FORWARD -o virbr0 -p tcp -d $GUEST_IP --dport $GUEST_PORT -j ACCEPT
+    /sbin/iptables -I FORWARD -o virbr0 -p udp -d $GUEST_IP --dport $GUEST_PORT -j ACCEPT
+    /sbin/iptables -I FORWARD -o virbr0 -p icmp -d $GUEST_IP -j ACCEPT
+    /sbin/iptables -t nat -I PREROUTING -p tcp --dport $HOST_PORT -j DNAT --to $GUEST_IP:$GUEST_PORT
+    /sbin/iptables -t nat -I PREROUTING -p udp --dport $HOST_PORT -j DNAT --to $GUEST_IP:$GUEST_PORT
+  fi
+fi

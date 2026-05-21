@@ -1,0 +1,15 @@
+#!/bin/bash
+
+adapter=$(acpi --ac-adapter | awk '{print $NF}')
+if [[ "${adapter}"_ = "off-line"_ ]]; then
+  declare -A profile=([Performance]=Quiet [Balanced]=Quiet [Quiet]=Balanced)
+else
+  declare -A profile=([Performance]=Balanced [Balanced]=Performance [Quiet]=Performance)
+fi
+
+cur=$(asusctl profile --profile-get | awk '{print $NF}')
+nxt="${profile[$cur]}"
+if test -n "${nxt}"; then
+  echo "${nxt}"
+  exec asusctl profile --profile-set "${nxt}"
+fi

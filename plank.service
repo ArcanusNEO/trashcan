@@ -1,0 +1,12 @@
+[Unit]
+Description=plank daemon
+BindsTo=graphical-session.target
+After=xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/plank
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

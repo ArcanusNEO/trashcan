@@ -1,0 +1,13 @@
+[Unit]
+Description=Clash For Windows daemon
+BindsTo=graphical-session.target
+After=network-online.target nftables.service iptables.service xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/cfw
+Restart=on-abnormal
+
+[Install]
+WantedBy=graphical-session.target

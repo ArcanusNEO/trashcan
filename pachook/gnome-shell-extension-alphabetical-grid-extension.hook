@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=gnome-shell-extension-alphabetical-grid-extension*
+
+[Action]
+Description=Compiling GSettings XML schema files for AlphabeticalAppGrid...
+Depends=glib2
+When=PostTransaction
+Exec=/usr/bin/glib-compile-schemas /usr/share/gnome-shell/extensions/AlphabeticalAppGrid@stuarthayhurst/schemas/

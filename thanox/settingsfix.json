@@ -1,0 +1,15 @@
+[
+  {
+    "name": "settingsfix",
+    "description": "Fixing broken settings in OxygenOS 13",
+    "priority": 1,
+    "delay": 13000,
+    "condition": "systemReady",
+    "actions": [
+      "ui.showShortToast(\"settingsfix\");",
+      "su.exe(\"settings delete secure op_sysui_qs_tiles_hide\");",
+      "su.exe(\"settings put global wifi_country_code AU\");",
+      "su.exe(\"settings put system wifi_country_code_for_scan AU\");"
+    ]
+  }
+]

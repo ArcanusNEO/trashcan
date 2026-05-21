@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=kvantum-theme-whitesur*
+
+[Action]
+Description=Patching for better GNOME experience...
+Depends=patch
+When=PostTransaction
+Exec=/usr/bin/patch -d/usr/share/Kvantum -Np1 -i/usr/local/src/kvantum-theme-whitesur-gnomish.patch

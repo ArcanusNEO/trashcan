@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = master
+[user]
+	email = admin@transcliff.eu.org
+	name = ArcanusNEO
+	signingkey = CF9F8C9239E9356F!
+[commit]
+	gpgsign = true
+[pull]
+	rebase = true

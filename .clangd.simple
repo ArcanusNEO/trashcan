@@ -1,0 +1,34 @@
+Index:
+  StandardLibrary: Yes
+CompileFlags:
+  Add: [-fwrapv, -fms-extensions, -Wall, -Wvla, -Wno-parentheses, -Wno-microsoft]
+
+---
+If:
+  PathMatch: [.*\.c$]
+CompileFlags:
+  Add: -xc
+Diagnostics:
+  ClangTidy:
+    Remove: "*cpp*"
+
+---
+If:
+  PathMatch: [.*\.h$]
+CompileFlags:
+  Add: -xc-header
+Diagnostics:
+  ClangTidy:
+    Remove: "*cpp*"
+
+---
+If:
+  PathMatch: [.*\.c(c|xx|pp)$]
+CompileFlags:
+  Add: -xc++
+
+---
+If:
+  PathMatch: [.*\.h(h|xx|pp)$]
+CompileFlags:
+  Add: -xc++-header

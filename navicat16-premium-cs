@@ -1,0 +1,7 @@
+#!/bin/bash
+navicat-reset-trial
+#while true; do
+#  xdotool windowquit $(xwinid '注册') && exit 0
+#  sleep 0.5
+#done &
+exec /opt/navicat16-premium-cs/AppRun

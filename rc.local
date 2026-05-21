@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# /etc/rc.d/rc.local:  Local system initialization script.
+#
+# Put any local startup commands in here.  Also, if you have
+# anything that needs to be run at shutdown time you can
+# make an /etc/rc.d/rc.local_shutdown script and put those
+# commands in there.
+
+if [ -x /etc/rc.d/rc.emacs ]; then
+  /etc/rc.d/rc.emacs start
+  /sbin/runuser -u lucas -- /etc/rc.d/rc.emacs start
+fi
+
+if [ -x /usr/local/etc/rc.d/rc.mihomo ]; then
+  /usr/local/etc/rc.d/rc.mihomo start
+fi
+
+if [ -x /etc/rc.d/rc.nginx ]; then
+  /etc/rc.d/rc.nginx start
+fi
+
+if [ -x /etc/rc.d/rc.adb ]; then
+  /etc/rc.d/rc.adb start
+fi

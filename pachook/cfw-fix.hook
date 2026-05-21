@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=clash-for-windows-electron-bin
+
+[Action]
+Description=Fixing bugs...
+Depends=sed
+When=PostTransaction
+Exec=/bin/sh -c "sed -i 's|^electron app.asar|exec electron app.asar|g' /usr/bin/cfw; sed -i 's|iptabels|iptables|g' /usr/lib/systemd/system/clash-core-service@.service"

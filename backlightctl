@@ -1,0 +1,7 @@
+#!/bin/sh
+CUR="$(cat /sys/class/backlight/intel_backlight/brightness)"
+MAX="$(cat /sys/class/backlight/intel_backlight/max_brightness)"
+NXT="$((CUR + $1))"
+NXT="$((NXT < 0 ? 0 : NXT))"
+NXT="$((NXT > MAX ? MAX : NXT))"
+echo "$NXT" >/sys/class/backlight/intel_backlight/brightness

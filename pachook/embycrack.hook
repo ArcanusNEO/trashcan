@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=emby-theater
+
+[Action]
+Description=Cracking Emby Theater Premiere...
+Depends=sed
+When=PostTransaction
+Exec=/usr/bin/sed -i 's|https://tv\.emby\.media|http://embycrack.tk|g' /usr/lib/emby-theater/resources/app/main.js

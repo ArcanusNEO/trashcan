@@ -1,0 +1,23 @@
+{
+  "servers": [{
+    "server": "0.0.0.0",
+    "server_port": 80,
+    "password": "Sl56bWZ2KEe07Mp8rteRGQ==",
+    "timeout": 300,
+    "method": "2022-blake3-aes-128-gcm",
+    "mode": "tcp_and_udp",
+    "fast_open": false,
+    "plugin": "obfs-server",
+    "plugin_opts": "obfs=http"
+  }, {
+    "server": "::",
+    "server_port": 80,
+    "password": "Sl56bWZ2KEe07Mp8rteRGQ==",
+    "timeout": 300,
+    "method": "2022-blake3-aes-128-gcm",
+    "mode": "tcp_and_udp",
+    "fast_open": false,
+    "plugin": "obfs-server",
+    "plugin_opts": "obfs=http"
+  }]
+}

@@ -1,0 +1,28 @@
+#!/usr/bin/env -S awk -f
+
+function trim(str) {
+  sub(/^[[:space:]]+/, "", str);
+  sub(/[[:space:]]+$/, "", str);
+  return str;
+}
+{
+  if (match($0, /for\s*\(([^;]+);([^;]+);([^;]+)\)(.*)/, matches)) {
+    initialization = trim(matches[1]);
+    condition = trim(matches[2]);
+    update = trim(matches[3]);
+    rest = matches[4];
+    while (match(update, /([^;]+)\+\+/)) {
+      matched = substr(update, RSTART, RLENGTH);
+      replacement = "++" trim(substr(matched, 1, length(matched) - 2));
+      update = substr(update, 1, RSTART - 1) replacement substr(update, RSTART + RLENGTH);
+    }
+    while (match(update, /([^;]+)--/)) {
+      matched = substr(update, RSTART, RLENGTH);
+      replacement = "--" trim(substr(matched, 1, length(matched) - 2));
+      update = substr(update, 1, RSTART - 1) replacement substr(update, RSTART + RLENGTH);
+    }
+    print "for (" initialization "; " condition "; " update ")" rest;
+  } else {
+    print;
+  }
+}

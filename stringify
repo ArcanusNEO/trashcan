@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec sed -z -e 's/\\/\\\\/g' -e 's/\n/\\n/g' -e 's/\t/\\t/g' -e 's/"/\\"/g' "$@" 

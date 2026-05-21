@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -x /etc/rc.d/rc.adb ]; then
+  /etc/rc.d/rc.adb stop
+fi
+
+if [ -x /etc/rc.d/rc.nginx ]; then
+  /etc/rc.d/rc.nginx stop
+fi
+
+if [ -x /usr/local/etc/rc.d/rc.mihomo ]; then
+  /usr/local/etc/rc.d/rc.mihomo stop
+fi
+
+if [ -x /etc/rc.d/rc.emacs ]; then
+  /sbin/runuser -u lucas -- /etc/rc.d/rc.emacs stop
+  /etc/rc.d/rc.emacs stop
+fi

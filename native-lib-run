@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec bwrap --dev-bind / / --ro-bind /dev/zero /etc/ld.so.preload --unsetenv LD_PRELOAD --unsetenv LD_LIBRARY_PATH "$@"

@@ -1,0 +1,13 @@
+[Unit]
+Description=The terminal multiplexer daemon for %i
+Documentation=man:tmux(1)
+After=gpg-agent.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/tmux new-session -s%i -d
+ExecStop=/usr/bin/tmux kill-session -t%i
+Restart=always
+
+[Install]
+WantedBy=default.target

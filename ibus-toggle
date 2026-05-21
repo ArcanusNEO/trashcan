@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell/Extensions/IbusSwitcher org.gnome.Shell.Extensions.IbusSwitcher.SwitchSource uint32:0 string:

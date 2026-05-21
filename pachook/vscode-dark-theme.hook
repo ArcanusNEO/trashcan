@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=visual-studio-code-bin
+
+[Action]
+Description=Setting WhiteSur-Dark GTK theme for visual studio code...
+Depends=sed
+When=PostTransaction
+Exec=/usr/bin/sed -Ei '/^#!\//a export GTK_THEME=WhiteSur-Dark' /usr/bin/code

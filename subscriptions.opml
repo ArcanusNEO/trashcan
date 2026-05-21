@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='utf-8'?>
+<opml version="2.0">
+  <body>
+    <outline text="黑客社区">
+      <outline text="Phoronix" type="rss" xmlUrl="https://rsshub.transcliff.top/phoronix" />
+      <outline text="Arch Linux" type="rss" xmlUrl="https://www.archlinuxcn.org/feed" />
+      <outline text="The Lucumr Blog" type="rss" xmlUrl="https://lucumr.pocoo.org/feed.atom" />
+      <outline text="酷壳 陈皓" type="rss" xmlUrl="https://coolshell.cn/feed" />
+      <outline text="云风的BLOG" type="rss" xmlUrl="https://blog.codingnow.com/atom.xml" />
+      <outline text="风雪之隅" type="rss" xmlUrl="https://www.laruence.com/feed" />
+      <outline text="阮一峰的网络日志" type="rss" xmlUrl="https://www.ruanyifeng.com/blog/atom.xml" />
+      <outline text="大侠阿木博客" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/daxiaamu/home?mode=fulltext" />
+      <outline text="技术头条" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/blogread/newest?mode=fulltext" />
+      <outline text="飞蚊话" type="rss" xmlUrl="https://www.bwsl.wang/feed" />
+    </outline>
+    <outline text="帖子杂谈">
+      <outline text="Hacker News" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/hackernews/index/new?mode=fulltext" />
+      <outline text="V2EX 最新主题" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/v2ex/topics/latest?mode=fulltext" />
+      <outline text="酷安 今日热门" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/coolapk/hot?mode=fulltext" />
+    </outline>
+    <outline text="二次元">
+      <outline text="小黑盒 动漫资讯BOT" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/user/20495862" />
+      <outline text="動畫瘋 最後更新" type="rss" xmlUrl="https://rsshub.transcliff.top/anigamer/new_anime" />
+      <outline text="动漫之家 动画情报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/donghuaqingbao" />
+      <outline text="动漫之家 漫画情报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/manhuaqingbao" />
+      <outline text="动漫之家 轻小说情报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/qingxiaoshuoqingbao" />
+      <outline text="动漫之家 漫画周边" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/manhuazhoubian" />
+      <outline text="动漫之家 声优情报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/shengyouqingbao" />
+      <outline text="动漫之家 音乐资讯" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/yinyuezixun" />
+      <outline text="动漫之家 美图欣赏" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/meituxinshang" />
+      <outline text="动漫之家 漫展情报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/dmzj/news/manzhanqingbao" />
+      <outline text="动漫之家 大杂烩" type="rss" xmlUrl="https://rsshub.transcliff.top/dmzj/news/dazahui" />
+    </outline>
+    <outline text="游戏数码">
+      <outline text="小黑盒 新闻杂谈BOT" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/user/18514074" />
+      <outline text="小黑盒 数码资讯BOT" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/user/18514035" />
+      <outline text="小黑盒 游戏折扣信息" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/discount/pc" />
+      <outline text="小黑盒 每日游报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/user/20497889" />
+      <outline text="小黑盒 游戏资讯BOT" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/user/23741741" />
+      <outline text="小黑盒 小黑盒活动" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/xiaoheihe/user/20298520" />
+      <outline text="极客公园" type="rss" xmlUrl="https://rsshub.transcliff.top/geekpark/breakingnews" />
+      <outline text="异次元软件世界" type="rss" xmlUrl="https://www.iplaysoft.com/feed" />
+      <outline text="3DM新闻中心" type="rss" xmlUrl="https://rsshub.transcliff.top/3dm/news" />
+    </outline>
+    <outline text="滚动消息">
+      <outline text="游戏打折情报 Steam历史低价" type="rss" xmlUrl="https://rsshub.transcliff.top/yxdzqb/low" />
+      <outline text="微博热搜" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/weibo/search/hot?limit=10" />
+      <outline text="知乎热榜" type="rss" xmlUrl="https://rsshub.transcliff.top/zhihu/hotlist" />
+      <outline text="中国地震局速报" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/earthquake/0?limit=10" />
+      <outline text="国家突发事件预警" type="rss" xmlUrl="https://rsshub.transcliff.top/12379?limit=10" />
+      <outline text="中国国家应急广播" type="rss" xmlUrl="https://rsshub.transcliff.top/cneb/yjxx?limit=10" />
+      <outline text="中央气象台预警" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/weatheralarm?limit=10" />
+    </outline>
+    <outline text="微信号">
+      <outline text="南方周末" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/ce/5a277b7c6921b049c63a52d9" />
+      <outline text="半佛仙人" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/ce/5ca6bb678ba69e1d5ff1670b" />
+      <outline text="酷安数码" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/ce/5f787c6ed918ad0f3eed5b0d" />
+      <outline text="思想花火" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/5b925323244e9737c39285596c53e3a2f4a30774" />
+      <outline text="虚拟框架" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/c0f0ee37039f7da55ed6ed4ae160d11af1915007" />
+      <outline text="看雪学苑" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/0e026637254d450ae84c59f87d4e4fb4616651ca" />
+      <outline text="七夜安全博客" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/019145f03889dce72141b912d697750e7e00106a" />
+      <outline text="二道情报贩子" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/86512202e74d01447788f355c4a4171a3c86740a" />
+      <outline text="老高的互联网杂谈" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/574587b13c6f60617fc74605702258ddf4aefac6" />
+      <outline text="吾爱破解论坛" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/90c827b8290310a96ef80a13df9dbcc06ab69892" />
+      <outline text="小众软件" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wechat/wechat2rss/3261d5a75cfef238650a2cabd4bbf99669c2f334" />
+    </outline>
+    <outline text="一般资讯">
+      <outline text="维基新闻" type="rss" xmlUrl="https://rsshub.transcliff.top/wikinews/latest" />
+      <outline text="WSJ - EN-US - world" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wsj/en-us/world" />
+      <outline text="WSJ - EN-US - opinion" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wsj/en-us/opinion" />
+      <outline text="WSJ - ZH-CN - world" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wsj/zh-cn/world" />
+      <outline text="WSJ - ZH-CN - opinion" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/wsj/zh-cn/opinion" />
+      <outline text="新华社新闻" type="rss" xmlUrl="https://rsshub.transcliff.top/news/whxw" />
+      <outline text="凤凰网资讯" type="rss" xmlUrl="https://rsshub.transcliff.top/ifeng/news" />
+      <outline text="新浪滚动新闻" type="rss" xmlUrl="https://rsshub.transcliff.top/sina/rollnews" />
+      <outline text="知乎每日精选" type="rss" xmlUrl="https://www.zhihu.com/rss" />
+      <outline text="iDaily每日环球视野" type="rss" xmlUrl="https://rsshub.transcliff.top/idaily/today" />
+    </outline>
+    <outline text="魔法学院">
+      <outline text="91porn 今日排行 简体中文" type="rss"
+        xmlUrl="https://rsshub.transcliff.top/91porn/cn_CN" />
+      <outline text="草榴社區 亞洲無碼原創區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/2" />
+      <outline text="草榴社區 亞洲有碼原創區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/15" />
+      <outline text="草榴社區 歐美原創區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/4" />
+      <outline text="草榴社區 動漫原創區 動畫" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/5/1" />
+      <outline text="草榴社區 動漫原創區 漫畫" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/5/2" />
+      <outline text="草榴社區 動漫原創區 遊戲" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/5/3" />
+      <outline text="草榴社區 國產原創區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/25" />
+      <outline text="草榴社區 中字原創區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/26" />
+      <outline text="草榴社區 HTTP下載區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/21" />
+      <outline text="草榴社區 在綫成人影院" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/22" />
+      <outline text="草榴社區 技術討論區" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/7" />
+      <outline text="草榴社區 新時代的我們" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/8" />
+      <outline text="草榴社區 達蓋爾的旗幟" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/16" />
+      <outline text="草榴社區 成人文學交流區 現代奇幻" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/20/1" />
+      <outline text="草榴社區 成人文學交流區 古典武俠" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/20/2" />
+      <outline text="草榴社區 成人文學交流區 另類禁忌" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/20/3" />
+      <outline text="草榴社區 成人文學交流區 性愛技巧" type="rss" xmlUrl="https://rsshub.transcliff.top/t66y/20/4" />
+    </outline>
+  </body>
+</opml>

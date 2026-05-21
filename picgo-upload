@@ -1,0 +1,33 @@
+#!/bin/bash
+
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.local.node/bin:$HOME/.local.python/bin:"${PATH-/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin:/usr/local/games:/usr/games:/opt/bin}":/usr/local/games:/usr/games:/opt/bin:/opt/android-sdk/platform-tools"
+
+success_text='[PicGo SUCCESS]'
+error_text='[PicGo ERROR]'
+
+test -n "$*" && img_path="$*" || \
+img_path=$(xclip -o -selection clipboard 2>/dev/null)
+
+if test -z "${img_path}"; then
+  echo 'Uploading from clipboard...' >&2
+  ret=$(picgo upload)
+elif [[ -f "${img_path}" ]] && file "${img_path}" | grep 'image' >/dev/null 2>&1; then
+  echo 'Uploading from file...' >&2
+  ret=$(picgo upload "${img_path}")
+else
+  echo 'Error reading image' >&2
+  notify-send "${error_text}" 'Error reading image'
+  exit 1
+fi
+
+url=$(echo "${ret}" | grep -FA1 "${success_text}" | grep -Fv "${success_text}")
+
+if test -z "${url}"; then
+  echo 'Error uploading image' >&2
+  notify-send "${error_text}" 'Error uploading image'
+  exit 1
+fi
+
+echo "${url}"
+echo -n "${url}" | xclip -selection clipboard && \
+notify-send "${success_text}" "${url}"

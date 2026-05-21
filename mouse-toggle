@@ -1,0 +1,19 @@
+#!/bin/sh
+
+xinput list |                          \
+grep -Eio '(mouse)\s*id=[0-9]{1,2}' |  \
+grep -Eo '[0-9]{1,2}' |                \
+xargs -I'{}' sh -c "                   \
+  device={};                           \
+  device_state=\$(                     \
+    xinput list-props \$device |       \
+    grep 'Device Enabled' |            \
+    awk '{print \$4}');                \
+  if [[ \$device_state -eq 1 ]]; then  \
+    xinput disable {};                 \
+    echo 'Mouse #'{}' disabled.';      \
+  else                                 \
+    xinput enable {};                  \
+    echo 'Mouse #'{}' enabled.';       \
+  fi                                   \
+"

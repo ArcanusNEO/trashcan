@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=*
+
+[Action]
+Description=Purging unwanted files...
+Depends=coreutils
+When=PostTransaction
+Exec=/bin/rm -rf -- /usr/lib/nautilus/extensions-4/libterminal-nautilus.so /usr/share/nautilus-python/extensions/wezterm-nautilus.py /etc/xdg/autostart/xdg-user-dirs.desktop /etc/xdg/autostart/restore_kmix_volumes.desktop /etc/xdg/autostart/konqy_preload.desktop /etc/xdg/autostart/user-dirs-update-gtk.desktop /etc/xdg/autostart/kalarm.autostart.desktop /etc/xdg/autostart/kmix_autostart.desktop /etc/xdg/autostart/baloo_file.desktop /etc/xdg/autostart/org.kde.kalendarac.desktop /etc/xdg/autostart/org.kde.kclockd-autostart.desktop /etc/xdg/autostart/org.kde.kdeconnect.daemon.desktop /etc/xdg/autostart/org.kde.kgpg.desktop /etc/xdg/autostart/org.kde.kunifiedpush-distributor.desktop

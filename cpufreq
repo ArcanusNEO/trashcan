@@ -1,0 +1,2 @@
+#!/bin/sh
+grep MHz /proc/cpuinfo | awk '{print $1 NR - 1 ": " $4 " MHz"}'

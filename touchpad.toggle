@@ -1,0 +1,7 @@
+#!/bin/sh
+TOUCHPAD='Synaptics TM3266-010'
+if xinput list "$TOUCHPAD" | grep -q 'This device is disabled'; then
+  xinput enable "$TOUCHPAD"
+else
+  xinput disable "$TOUCHPAD"
+fi

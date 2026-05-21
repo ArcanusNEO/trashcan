@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export ZTERM=T
+
+exec zsh

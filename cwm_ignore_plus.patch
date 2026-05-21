@@ -1,0 +1,98 @@
+diff --git a/client.c b/client.c
+index afbf874..de73744 100644
+--- a/client.c
++++ b/client.c
+@@ -308,6 +308,8 @@ client_toggle_sticky(struct client_ctx *cc)
+ void
+ client_toggle_fullscreen(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	struct screen_ctx	*sc = cc->sc;
+ 	struct geom		 area;
+ 
+@@ -342,6 +344,8 @@ resize:
+ void
+ client_toggle_maximize(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	struct screen_ctx	*sc = cc->sc;
+ 	struct geom		 area;
+ 
+@@ -383,6 +387,8 @@ resize:
+ void
+ client_toggle_vmaximize(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	struct screen_ctx	*sc = cc->sc;
+ 	struct geom		 area;
+ 
+@@ -416,6 +422,8 @@ resize:
+ void
+ client_toggle_hmaximize(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	struct screen_ctx	*sc = cc->sc;
+ 	struct geom		 area;
+ 
+@@ -449,6 +457,8 @@ resize:
+ void
+ client_resize(struct client_ctx *cc, int reset)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	if (reset) {
+ 		cc->flags &= ~CLIENT_MAXIMIZED;
+ 		xu_ewmh_set_net_wm_state(cc);
+@@ -466,6 +476,8 @@ client_resize(struct client_ctx *cc, int reset)
+ void
+ client_move(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	XMoveWindow(X_Dpy, cc->win, cc->geom.x, cc->geom.y);
+ 	client_config(cc);
+ }
+@@ -544,6 +556,8 @@ client_ptr_save(struct client_ctx *cc)
+ void
+ client_hide(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	XUnmapWindow(X_Dpy, cc->win);
+ 
+ 	if (cc->flags & CLIENT_ACTIVE) {
+@@ -652,6 +666,8 @@ client_wm_hints(struct client_ctx *cc)
+ void
+ client_close(struct client_ctx *cc)
+ {
++  if (cc->flags & CLIENT_IGNORE)
++    return;
+ 	if (cc->flags & CLIENT_WM_DELETE_WINDOW)
+ 		xu_send_clientmsg(cc->win, cwmh[WM_DELETE_WINDOW], CurrentTime);
+ 	else
+@@ -869,7 +885,7 @@ client_transient(struct client_ctx *cc)
+ 	if (XGetTransientForHint(X_Dpy, cc->win, &trans)) {
+ 		if ((tc = client_find(trans)) != NULL) {
+ 			if (tc->flags & CLIENT_IGNORE) {
+-				cc->flags |= CLIENT_IGNORE;
++				cc->flags |= CLIENT_IGNORE | CLIENT_FREEZE;
+ 				cc->bwidth = tc->bwidth;
+ 			}
+ 		}
+diff --git a/conf.c b/conf.c
+index fee6e9d..0dd983d 100644
+--- a/conf.c
++++ b/conf.c
+@@ -471,7 +471,7 @@ conf_client(struct client_ctx *cc)
+ 
+ 	TAILQ_FOREACH(wn, &Conf.ignoreq, entry) {
+ 		if (strncasecmp(wn->name, cc->name, strlen(wn->name)) == 0) {
+-			cc->flags |= CLIENT_IGNORE;
++			cc->flags |= CLIENT_IGNORE | CLIENT_FREEZE;
+ 			break;
+ 		}
+ 	}

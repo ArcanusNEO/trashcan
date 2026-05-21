@@ -1,0 +1,49 @@
+filetype indent on
+filetype on
+filetype plugin on
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+set autoindent
+set autoread
+set autowrite
+set backspace=2
+set cindent
+set clipboard=unnamed 
+set cmdheight=1
+set completeopt=preview,menu 
+set confirm
+set enc=utf-8
+set expandtab
+set fencs=utf-8,ucs-bom,chinese,gb18030,gbk,gb2312,cp936,big5,cp950,japanese,iso-2022-jp,euc-jp,sjis,korean,euc-kr,cp949,latin1
+set fillchars=vert:\ ,stl:\ ,stlnc:\
+set gdefault
+set guioptions-=m
+set guioptions-=T
+set helplang=cn
+set history=10000
+set hlsearch
+set ignorecase
+set incsearch
+set iskeyword+=_,$,@,%,#,-
+set laststatus=2
+set linespace=0
+set magic
+set matchtime=1
+set nobackup
+set nocompatible
+set noeb
+set noswapfile
+set noundofile
+set report=0
+set ruler
+set scrolloff=3
+set selection=exclusive
+set shiftwidth=2
+set showmatch
+set smartindent
+set smarttab
+set softtabstop=2
+set statusline=[%F][%{&encoding}][%{&fileformat}]%y%m%=[Unicode:0x%B(%b)][Line:%l/%L,Column:%c][%p%%]
+set syntax=on
+set tabstop=2
+set viminfo+=!
+set wildmenu

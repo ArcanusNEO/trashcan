@@ -1,0 +1,23 @@
+--- extension.js	2023-06-05 20:04:33.000000000 +0800
++++ extension.js	2023-06-05 20:05:34.917150843 +0800
+@@ -1611,17 +1611,17 @@
+         this.update();
+     }
+     refresh() {
+-        let total_frequency = 0;
++        let max_frequency = 0;
+         let num_cpus = GTop.glibtop_get_sysinfo().ncpu;
+         let i = 0;
+         let file = Gio.file_new_for_path(`/sys/devices/system/cpu/cpu${i}/cpufreq/scaling_cur_freq`);
+         var that = this;
+         file.load_contents_async(null, function cb(source, result) {
+             let as_r = source.load_contents_finish(result);
+-            total_frequency += parseInt(parse_bytearray(as_r[1]));
++            max_frequency = Math.max(max_frequency, parseInt(parse_bytearray(as_r[1])));
+ 
+             if (++i >= num_cpus) {
+-                that.freq = Math.round(total_frequency / num_cpus / 1000);
++                that.freq = Math.round(max_frequency / 1000); 
+             } else {
+                 file = Gio.file_new_for_path(`/sys/devices/system/cpu/cpu${i}/cpufreq/scaling_cur_freq`);
+                 file.load_contents_async(null, cb.bind(that));

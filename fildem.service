@@ -1,0 +1,12 @@
+[Unit]
+Description=fildem daemon
+BindsTo=graphical-session.target
+After=xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fildem
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

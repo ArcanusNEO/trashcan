@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=finalshell
+
+[Action]
+Description=Fixing tray icon...
+When=PostTransaction
+Exec=/usr/bin/sed -i 's|^Exec=.*$|Exec=finalshell|g' /usr/share/applications/finalshell.desktop

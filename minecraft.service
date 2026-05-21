@@ -1,0 +1,16 @@
+[Unit]
+Description=mincraft vallina 1.19.2 service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/games/minecraft-srv/data/vallina-1.19.2
+User=lucas
+Group=games
+UMask=0002
+ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar /var/games/minecraft-srv/vallina/minecraft_server.1.19.2.jar nogui
+Restart=on-failure
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

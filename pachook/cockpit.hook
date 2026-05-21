@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=cockpit
+
+[Action]
+Description=Purging login shell messages...
+Depends=coreutils
+When=PostTransaction
+Exec=/bin/rm -f -- /etc/issue.d/cockpit.issue /etc/motd.d/cockpit 

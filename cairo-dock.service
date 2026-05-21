@@ -1,0 +1,13 @@
+[Unit]
+Description=cairo dock daemon
+BindsTo=graphical-session.target
+After=xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+Environment=GDK_BACKEND=x11
+ExecStart=/usr/bin/cairo-dock
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

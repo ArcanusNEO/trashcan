@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec qterminal --profile emacs.qterminal --execute sh -c 'printf "\e[0 q" && exec emacsclient -tc -a "emacs -nw" '"$*" >/dev/null 2>&1

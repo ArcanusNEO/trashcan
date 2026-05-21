@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="th_server">哔哩.plus</string>
+    <boolean name="purify_share" value="true" />
+    <boolean name="show_hint" value="false" />
+    <boolean name="custom_splash" value="false" />
+    <boolean name="hidden" value="false" />
+    <boolean name="teenagers_mode_dialog" value="true" />
+    <boolean name="disable_auto_select" value="true" />
+    <boolean name="replace_story_video" value="true" />
+    <string name="pegasus_cover_ratio">0</string>
+    <boolean name="main_func" value="true" />
+    <boolean name="disable_main_page_story" value="true" />
+    <string name="full_screen_quality">120</string>
+    <boolean name="disable_auto_refresh" value="true" />
+    <boolean name="disable_story_full" value="true" />
+    <boolean name="auto_dark_splash" value="true" />
+    <boolean name="revert_live_room_feed" value="false" />
+    <string name="live_quality">0</string>
+    <boolean name="force_browser" value="true" />
+    <string name="tw_server">哔哩.plus</string>
+    <string name="hk_server">哔哩.plus</string>
+    <boolean name="block_update" value="true" />
+    <boolean name="dialog_blur_background" value="true" />
+    <boolean name="play_arc_conf" value="true" />
+    <boolean name="music_notification" value="false" />
+    <boolean name="enable_av" value="true" />
+    <boolean name="block_comment_guide" value="true" />
+    <boolean name="drawer" value="true" />
+    <boolean name="fake_non_multiwindow" value="true" />
+    <boolean name="fix_space" value="true" />
+    <string name="upos_host">$1</string>
+    <string name="half_screen_quality">116</string>
+    <boolean name="allow_download" value="true" />
+    <boolean name="fix_download" value="false" />
+    <boolean name="comment_copy" value="true" />
+    <boolean name="custom_download_thread" value="true" />
+    <boolean name="custom_subtitle" value="false" />
+    <boolean name="mini_program" value="true" />
+    <boolean name="custom_splash_logo" value="false" />
+    <boolean name="comment_copy_enhance" value="true" />
+    <boolean name="show_info" value="true" />
+    <boolean name="save_comment_image" value="true" />
+    <boolean name="allow_mini_play" value="true" />
+</map>

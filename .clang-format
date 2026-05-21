@@ -1,0 +1,8 @@
+BasedOnStyle: GNU
+ForEachMacros:
+  - lsfor$
+  - yyjson_arr_foreach
+  - yyjson_obj_foreach
+  - yyjson_mut_arr_foreach
+  - yyjson_mut_obj_foreach
+SortIncludes: Never

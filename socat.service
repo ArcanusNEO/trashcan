@@ -1,0 +1,13 @@
+[Unit]
+Description=socat service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat TCP-LISTEN:90080,fork,reuseaddr TCP:192.83.167.78:80
+Restart=on-failure
+RestartSec=5
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

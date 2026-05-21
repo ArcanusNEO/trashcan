@@ -1,0 +1,8 @@
+#!/bin/bash
+for _dll in /usr/share/dxvk/x32/*.dll; do
+  dll=${_dll/\/usr\/share\/dxvk\/x32\//}
+  ln -srfv /usr/share/dxvk/x32/$dll /usr/share/steam/compatibilitytools.d/proton-ge-custom/files/lib/wine/dxvk/$dll
+  ln -srfv /usr/share/dxvk/x32/$dll /usr/share/steam/compatibilitytools.d/proton-ge-custom/files/lib/wine/i386-windows/$dll
+  ln -srfv /usr/share/dxvk/x64/$dll /usr/share/steam/compatibilitytools.d/proton-ge-custom/files/lib64/wine/dxvk/$dll
+  ln -srfv /usr/share/dxvk/x64/$dll /usr/share/steam/compatibilitytools.d/proton-ge-custom/files/lib64/wine/x86_64-windows/$dll
+done

@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=proton-ge-custom*
+
+[Action]
+Description=Overriding dxvk...
+When=PostTransaction
+Exec=/usr/local/bin/setup_dxvk.proton-ge-custom

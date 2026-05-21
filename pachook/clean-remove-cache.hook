@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Remove
+Type=Package
+Target=*
+
+[Action]
+Description=Cleaning pacman cache...
+Depends=pacman-contrib
+When=PostTransaction
+Exec=/bin/bash -c 'paccache --nocolor -ruk0 | awk NF'

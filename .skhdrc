@@ -1,0 +1,7 @@
+cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd - e : open /Applications/Safari.app
+cmd - t : open /System/Applications/TextEdit.app
+cmd - u : open /System/Library/CoreServices/Finder.app ~
+cmd - i : open '/Applications/Google Chrome.app'
+cmd - s : open '/System/Applications/System Settings.app'
+cmd - j : open /System/Applications/Calculator.app

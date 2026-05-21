@@ -1,0 +1,3 @@
+clear lock
+keycode 101 = Hiragana_Katakana Caps_Lock Hiragana_Katakana
+add lock = Caps_Lock

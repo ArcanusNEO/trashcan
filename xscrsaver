@@ -1,0 +1,11 @@
+#!/bin/sh
+
+test -n "$*" && scrsaver="$*" || scrsaver=genact
+
+exec cool-retro-term -T '__DONT_TOUCH_ME__' --fullscreen -e sh -c " \
+  stty -echo; \
+  wmctrl -r __DONT_TOUCH_ME__ -b add,above; \
+  clear; \
+  unclutter --start-hidden & xscrsaver-wrapper ${scrsaver}; \
+  exit 0; \
+"

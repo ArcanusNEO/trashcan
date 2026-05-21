@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=*
+
+[Action]
+Description=Cleaning pacman cache...
+Depends=pacman-contrib
+When=PostTransaction
+Exec=/bin/bash -c 'paccache --nocolor -rk1 | awk NF'

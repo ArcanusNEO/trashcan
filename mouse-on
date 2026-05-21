@@ -1,0 +1,9 @@
+#!/bin/sh
+
+xinput list |                          \
+grep -Eio '(mouse)\s*id=[0-9]{1,2}' |  \
+grep -Eo '[0-9]{1,2}' |                \
+xargs -I'{}' sh -c "                   \
+  xinput enable {};                    \
+  echo 'Mouse #'{}' enabled.';         \
+"

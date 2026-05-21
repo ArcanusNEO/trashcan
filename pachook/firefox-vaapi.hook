@@ -1,0 +1,12 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=firefox-vaapi
+
+[Action]
+Description=Patching Firefox...
+Depends=bash
+Depends=perl
+When=PostTransaction
+Exec=/bin/bash -c '/usr/bin/perl -i -pe "s|exec /usr/lib/firefox/firefox|exec /usr/local/bin/nvrun /usr/lib/firefox/firefox|g" /usr/bin/firefox && /usr/bin/perl -i -pe "s|/usr/lib/firefox/firefox|/usr/bin/firefox|g" /usr/share/applications/firefox.desktop'

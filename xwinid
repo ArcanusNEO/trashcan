@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+if [ -z "$@" ]; then
+  exec xwininfo | grep 'Window id' | awk '{match($0, /0x\w+/, a); print a[0]}'
+else
+  exec xwininfo -name "$@" | grep 'Window id' | awk '{match($0, /0x\w+/, a); print a[0]}'
+fi

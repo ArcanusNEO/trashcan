@@ -1,0 +1,13 @@
+[Unit]
+Description=wallpaper engine
+BindsTo=graphical-session.target
+After=xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sh -c 'acpi --ac-adapter | grep on-line'
+ExecStart=/usr/bin/xwinwrap -ni -fdt -fs -un -s -st -sp -b -nf -- mpv --no-terminal --loop=inf --no-audio --wid=%%WID /media/share/wallpaper.mkv
+Restart=on-abnormal
+
+[Install]
+WantedBy=graphical-session.target

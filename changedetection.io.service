@@ -1,0 +1,15 @@
+[Unit]
+Description=changedetection.io service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/changedetection.io
+User=root
+Group=root
+ExecStart=/usr/local/bin/changedetection.io -d /var/changedetection.io -h 127.0.0.1 -p 2080
+Restart=on-failure
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

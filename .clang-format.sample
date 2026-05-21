@@ -1,0 +1,152 @@
+BasedOnStyle: Google
+AccessModifierOffset: -2
+AlignAfterOpenBracket: DontAlign
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments: None
+AlignConsecutiveBitFields: Consecutive
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: Consecutive
+# AlignConsecutiveShortCaseStatements:
+#   Enabled: true
+#   AcrossEmptyLines: false
+#   AcrossComments: false
+#   AlignCaseColons: false
+AlignEscapedNewlines: Right
+AlignOperands: DontAlign
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: InlineOnly
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLambdasOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: true
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakTemplateDeclarations: Yes
+AttributeMacros:
+  - always_inline$
+  - fast$
+  - callback$
+BinPackArguments: true
+BinPackParameters: true
+BitFieldColonSpacing: After
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  AfterExternBlock: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+# BreakAfterAttributes: Leave
+BreakBeforeBinaryOperators: None
+BreakBeforeBraces: Attach
+# BreakBeforeConceptDeclarations: Allowed
+# BreakBeforeInlineASMColon: OnlyMultiline
+BreakBeforeTernaryOperators: false
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakStringLiterals: false
+ColumnLimit: 80
+CompactNamespaces: false
+ConstructorInitializerIndentWidth: 2
+ContinuationIndentWidth: 2
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+DisableFormat: false
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: LogicalBlock
+FixNamespaceComments: true
+# ForEachMacros:
+#   - loop
+# IfMacros:
+#   - KJ_IF_MAYBE
+IncludeBlocks: Preserve
+IncludeCategories:
+  - Regex: ".*"
+    Priority: 1
+IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: true
+IndentExternBlock: NoIndent
+IndentGotoLabels: false
+IndentPPDirectives: None
+IndentRequiresClause: true
+IndentWidth: 2
+IndentWrappedFunctionNames: false
+InsertBraces: false
+# InsertNewlineAtEOF: true
+# InsertTrailingCommas: Wrapped
+# IntegerLiteralSeparator:
+#   Binary: 4
+#   Decimal: 0
+#   Hex: 0
+JavaScriptQuotes: Leave
+JavaScriptWrapImports: true
+# KeepEmptyLinesAtEOF: true
+KeepEmptyLinesAtTheStartOfBlocks: false
+LambdaBodyIndentation: OuterScope
+# Language: None
+# LineEnding: DeriveLF
+# MacroBlockBegin:
+# MacroBlockEnd:
+# Macros:
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+# NamespaceMacros:
+PPIndentWidth: -1
+PackConstructorInitializers: NextLine
+PointerAlignment: Left
+# QualifierAlignment: Custom
+# QualifierOrder:
+#   - "volatile"
+#   - "static"
+#   - "inline"
+#   - "constexpr"
+#   - "const"
+#   - "type"
+#   - "restrict"
+ReferenceAlignment: Pointer
+ReflowComments: false
+# RemoveBracesLLVM: true
+# RemoveParentheses: ReturnStatement
+# RemoveSemicolon: true
+RequiresClausePosition: WithPreceding
+# RequiresExpressionIndentation: OuterScope
+SeparateDefinitionBlocks: Always
+ShortNamespaceLines: 1
+SortIncludes: Never
+#SortUsingDeclarations: Never
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: false
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpacesBeforeTrailingComments: 2
+SpacesInAngles: Never
+SpacesInContainerLiterals: false
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: 1
+SpacesInSquareBrackets: false
+Standard: Auto
+TabWidth: 2
+UseTab: Never

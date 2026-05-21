@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=whitesur-gtk-theme*
+
+[Action]
+Description=Patching for better GNOME experience...
+Depends=sed
+When=PostTransaction
+Exec=/bin/bash -c 'sed -i -e "/.candidate-box {/a\  font-size: 12pt;" -e "/.candidate-popup-content {/a\  font-size: 12pt;" /usr/share/themes/WhiteSur-*/gnome-shell/gnome-shell.css'

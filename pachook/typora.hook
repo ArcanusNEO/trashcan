@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Path
+Target=usr/share/typora/resources/style/themes/whitey.css
+
+[Action]
+Description=Patching Typora Whitey theme...
+Depends=perl
+When=PostTransaction
+Exec=/usr/bin/perl -i -pe 's/"Consolas"/"Fira Code", "Consolas"/g' /usr/share/typora/resources/style/themes/whitey.css

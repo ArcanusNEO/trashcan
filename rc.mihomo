@@ -1,0 +1,32 @@
+#!/bin/sh
+
+mihomo_start() {
+  if [ -x /usr/local/bin/mihomo ]; then
+    echo "Starting mihomo:  /usr/local/bin/mihomo -d /usr/local/etc/mihomo"
+    /usr/bin/daemon -r -n mihomo -- /usr/local/bin/mihomo -d /usr/local/etc/mihomo
+  fi
+}
+
+mihomo_stop() {
+  echo "Stopping mihomo..."
+  /usr/bin/daemon -r -n mihomo --stop
+}
+
+mihomo_restart() {
+  echo "Restarting mihomo..."
+  /usr/bin/daemon -r -n mihomo --restart
+}
+
+case "$1" in
+  'start')
+    mihomo_start
+    ;;
+  'stop')
+    mihomo_stop
+    ;;
+  'restart')
+    mihomo_restart
+    ;;
+  *)
+    echo "usage $0 start|stop|restart"
+esac

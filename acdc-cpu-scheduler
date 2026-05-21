@@ -1,0 +1,25 @@
+#!/bin/bash
+
+adapter_status=$(acpi --ac-adapter)
+status=$(echo "${adapter_status}" | awk '{print $NF}')
+boost_file=/dev/null
+boost_on=1
+boost_off=0
+
+if [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]]; then
+  boost_file=/sys/devices/system/cpu/intel_pstate/no_turbo
+  boost_on=0
+  boost_off=1
+elif [[ -f /sys/devices/system/cpu/cpufreq/boost ]]; then
+  boost_file=/sys/devices/system/cpu/cpufreq/boost
+  boost_on=1
+  boost_off=0
+fi
+
+if [[ "${status}"_ = "on-line"_ ]]; then
+  cpupower frequency-set --governor=performance
+  echo "${boost_on}" >"${boost_file}"
+elif [[ "${status}"_ = "off-line"_ ]]; then
+  cpupower frequency-set --governor=schedutil
+  echo "${boost_off}" >"${boost_file}"
+fi

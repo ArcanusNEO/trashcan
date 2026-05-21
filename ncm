@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export WINEARCH=win32
+export WINEPREFIX=$HOME/wine/32/netease-cloud-music
+export WINEDEBUG=-all
+
+cd "$HOME/wine/32/netease-cloud-music/drive_c/Program Files/NetEase/CloudMusic/"
+exec wine cloudmusic.exe

@@ -1,0 +1,26 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [{
+    "port": 17956,
+    "listen": "127.0.0.1",
+    "protocol": "vless",
+    "settings": {
+      "clients": [{
+        "id": ""
+      }],
+      "decryption": "none"
+    },
+    "streamSettings": {
+      "network": "ws",
+      "security": "none",
+      "wsSettings": {
+        "path": "/admin"
+      }
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom"
+  }]
+}

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if test -z "$*" || [[ $* =~ --(help|usage) ]]; then
+  echo "Usage example: $0 -avf /backup.tar.zst --exclude=/backup.tar.zst" >&2
+  test -z "$*" && exit 2 || exit 0
+fi
+
+prefix=$(echo "${prefix}" | tr -s '/' | sed 's|/$||')
+
+exec tar --create \
+  --preserve-permissions \
+  --absolute-names \
+  --one-file-system \
+  --exclude-backups \
+  --exclude-caches-under \
+  --exclude="${prefix}"/proc/* \
+  --exclude="${prefix}"/sys/* \
+  --exclude="${prefix}"/run/* \
+  --exclude="${prefix}"/dev/* \
+  --exclude="${prefix}"/tmp/* \
+  --exclude="${prefix}"/var/tmp/* \
+  --exclude="${prefix}"/var/log/* \
+  --exclude="${prefix}"/lost+found \
+  "$@" \
+  --transform="s|^${prefix}/||" \
+  -- "${prefix}"/*

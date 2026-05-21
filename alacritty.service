@@ -1,0 +1,12 @@
+[Unit]
+Description=alacritty daemon
+BindsTo=graphical-session.target
+After=graphical-session.target xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/alacritty --hold --daemon
+Restart=always
+
+[Install]
+WantedBy=graphical-session.target

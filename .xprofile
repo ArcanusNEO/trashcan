@@ -1,0 +1,24 @@
+export LANG=zh_CN.UTF-8
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export SDL_IM_MODULE=ibus
+export GLFW_IM_MODULE=ibus
+export QT_STYLE_OVERRIDE=kvantum
+export QT_WAYLAND_DECORATION=whitesur-gtk
+
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
+
+export PROTON_ENABLE_WAYLAND=1
+export PROTON_USE_WOW64=1
+export PROTON_USE_NTSYNC=1
+export VKD3D_CONFIG=dxr11,dxr
+export VKD3D_DEBUG=none
+export VKD3D_SHADER_DEBUG=none
+export DXVK_LOG_LEVEL=none
+export CSMT=enabled
+export DXVK_ASYNC=1
+export DXVK_GPLASYNCCACHE=1
+export vblank_mode=0
+export __GL_SYNC_TO_VBLANK=0

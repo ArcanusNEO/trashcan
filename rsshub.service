@@ -1,0 +1,15 @@
+[Unit]
+Description=rsshub service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/RSSHub
+User=root
+Group=www-data
+ExecStart=/usr/bin/npm start --name rsshub
+Restart=on-failure
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

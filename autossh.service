@@ -1,0 +1,14 @@
+[Unit]
+Description=autossh service
+After=network.target sshd.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/autossh -i/root/.ssh/low_perm_ed -M30736 -CNR'80:127.0.0.1:80' root@121.36.1.99
+Restart=on-failure
+RestartSec=5
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

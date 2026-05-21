@@ -1,0 +1,11 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=navicat16-premium-cs
+
+[Action]
+Description=Hacking for unlimited trial...
+Depends=sed
+When=PostTransaction
+Exec=/usr/bin/sed -i 's|^Exec=.*$|Exec=navicat16-premium-cs|g' /usr/share/applications/navicat16.desktop
