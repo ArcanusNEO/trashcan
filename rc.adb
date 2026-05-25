@@ -2,8 +2,8 @@
 
 adb_start() {
   if [ -x /usr/bin/adb ]; then
-    echo "Starting adb server:  /usr/bin/adb start-server"
-    /usr/bin/adb start-server
+    echo "Starting adb server:  /usr/bin/adb start-server &"
+    /usr/bin/adb start-server >/dev/null 2>&1 &
   fi
 }
 
