@@ -1,6 +1,7 @@
 BasedOnStyle: GNU
 ForEachMacros:
   - lsfor$
+  - with$
   - yyjson_arr_foreach
   - yyjson_obj_foreach
   - yyjson_mut_arr_foreach
