@@ -2,7 +2,7 @@ fontname "sans-serif:pixelsize=14:bold"
 
 gap 30 0 0 0
 ignore SculcV0z5lqfutint2pkDxHTvWFKpE
-
+autogroup 0 "Mail", "thunderbird-default"
 sticky yes
 
 command term "alacritty msg create-window"
@@ -19,6 +19,7 @@ bind-key 4-u "dolphin --new-window"
 bind-key 4-i "chromium-browser-ungoogled"
 bind-key 4-c "xcalc"
 
+bind-key 4-F5 "xrandr --output eDP1 --primary --mode 1600x900"
 bind-key 4-F6 "backlightctl -12403"
 bind-key 4-F7 "backlightctl +12403"
 bind-key 4-F9 "touchpad.toggle"
