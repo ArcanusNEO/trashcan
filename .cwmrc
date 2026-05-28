@@ -6,6 +6,7 @@ sticky yes
 
 autogroup 0 "Mail", "thunderbird-default"
 autogroup 0 "audacious", "Audacious"
+autogroup 0 "netease-cloud-music-web-player", "netease-cloud-music-web-player"
 
 command term "alacritty msg create-window"
 command lock "xlock -mode blank"
