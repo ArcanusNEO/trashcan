@@ -2,8 +2,10 @@ fontname "sans-serif:pixelsize=14:bold"
 
 gap 30 0 0 0
 ignore SculcV0z5lqfutint2pkDxHTvWFKpE
-autogroup 0 "Mail", "thunderbird-default"
 sticky yes
+
+autogroup 0 "Mail", "thunderbird-default"
+autogroup 0 "audacious", "Audacious"
 
 command term "alacritty msg create-window"
 command lock "xlock -mode blank"
