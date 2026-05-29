@@ -27,7 +27,7 @@ alias switcheroo='envycontrol --verbose --coolbits 24 --switch'
 export EDITOR=vi
 # export VISUAL='emacsclient -tc -a "emacs -nw"'
 export WINEPREFIX="$HOME/wine/default"
-export WINEARCH=win64
+export WINEARCH=wow64
 export WINEDEBUG=-all
 export WINETRICKS_DOWNLOADER=wget
 unset DEBUGINFOD_URLS
