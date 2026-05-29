@@ -45,6 +45,7 @@ tint2 &
 volumeicon &
 fcitx5 -dr &
 xfce4-clipman &
+nm-applet &
 
 # picom --backend=xrender --no-vsync --no-fading-openclose --unredir-if-possible --blur-method=none --use-damage &
 
