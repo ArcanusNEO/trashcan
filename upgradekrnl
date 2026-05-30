@@ -18,7 +18,7 @@ upgrade() {
   local pkg="$(cat PACKAGES.TXT | fname $*)"
   if [ ! -f /var/log/packages/"${pkg%.t*}" ]; then
     wget "$MIRROR/$(cat PACKAGES.TXT | fpath $*)"
-    upgradepkg "$pkg"
+    upgradepkg --install-new "$pkg"
     rm -f "$pkg"
   fi
 }
