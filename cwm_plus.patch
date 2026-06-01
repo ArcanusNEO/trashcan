@@ -1,5 +1,5 @@
 diff --git a/client.c b/client.c
-index afbf874..8437228 100644
+index afbf874..49e8b84 100644
 --- a/client.c
 +++ b/client.c
 @@ -93,7 +93,8 @@ client_init(Window win, struct screen_ctx *sc)
@@ -8,7 +8,7 @@ index afbf874..8437228 100644
  
 -	if ((cc->flags & CLIENT_IGNORE))
 +	if ((cc->flags & CLIENT_IGNORE) ||
-+	    (cc->flags & CLIENT_MAXFLAGS) == CLIENT_MAXIMIZED))
++	    (cc->flags & CLIENT_MAXFLAGS) == CLIENT_MAXIMIZED)
  		cc->bwidth = 0;
  	cc->dim.w = (cc->geom.w - cc->hint.basew) / cc->hint.incw;
  	cc->dim.h = (cc->geom.h - cc->hint.baseh) / cc->hint.inch;
