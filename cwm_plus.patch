@@ -1,13 +1,13 @@
 diff --git a/client.c b/client.c
-index afbf874..cf5cf9b 100644
+index afbf874..c78f2dd 100644
 --- a/client.c
 +++ b/client.c
 @@ -308,6 +308,8 @@ client_toggle_sticky(struct client_ctx *cc)
  void
  client_toggle_fullscreen(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	struct screen_ctx	*sc = cc->sc;
  	struct geom		 area;
  
@@ -15,8 +15,8 @@ index afbf874..cf5cf9b 100644
  void
  client_toggle_maximize(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	struct screen_ctx	*sc = cc->sc;
  	struct geom		 area;
  
@@ -40,8 +40,8 @@ index afbf874..cf5cf9b 100644
  void
  client_toggle_vmaximize(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	struct screen_ctx	*sc = cc->sc;
  	struct geom		 area;
  
@@ -49,8 +49,8 @@ index afbf874..cf5cf9b 100644
  void
  client_toggle_hmaximize(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	struct screen_ctx	*sc = cc->sc;
  	struct geom		 area;
  
@@ -58,8 +58,8 @@ index afbf874..cf5cf9b 100644
  void
  client_resize(struct client_ctx *cc, int reset)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	if (reset) {
  		cc->flags &= ~CLIENT_MAXIMIZED;
  		xu_ewmh_set_net_wm_state(cc);
@@ -67,8 +67,8 @@ index afbf874..cf5cf9b 100644
  void
  client_move(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	XMoveWindow(X_Dpy, cc->win, cc->geom.x, cc->geom.y);
  	client_config(cc);
  }
@@ -76,8 +76,8 @@ index afbf874..cf5cf9b 100644
  void
  client_hide(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	XUnmapWindow(X_Dpy, cc->win);
  
  	if (cc->flags & CLIENT_ACTIVE) {
@@ -85,8 +85,8 @@ index afbf874..cf5cf9b 100644
  void
  client_close(struct client_ctx *cc)
  {
-+  if (cc->flags & CLIENT_IGNORE)
-+    return;
++	if (cc->flags & CLIENT_IGNORE)
++		return;
  	if (cc->flags & CLIENT_WM_DELETE_WINDOW)
  		xu_send_clientmsg(cc->win, cwmh[WM_DELETE_WINDOW], CurrentTime);
  	else
@@ -99,6 +99,28 @@ index afbf874..cf5cf9b 100644
  				cc->bwidth = tc->bwidth;
  			}
  		}
+@@ -938,10 +956,6 @@ client_htile(struct client_ctx *cc)
+ 	if (n == 0)
+ 		return;
+ 
+-	if (cc->flags & CLIENT_VMAXIMIZED ||
+-	    cc->geom.h + (cc->bwidth * 2) >= area.h)
+-		return;
+-
+ 	cc->flags &= ~CLIENT_HMAXIMIZED;
+ 	cc->geom.x = area.x;
+ 	cc->geom.y = area.y;
+@@ -1007,10 +1021,6 @@ client_vtile(struct client_ctx *cc)
+ 	if (n == 0)
+ 		return;
+ 
+-	if (cc->flags & CLIENT_HMAXIMIZED ||
+-	    cc->geom.w + (cc->bwidth * 2) >= area.w)
+-		return;
+-
+ 	cc->flags &= ~CLIENT_VMAXIMIZED;
+ 	cc->geom.x = area.x;
+ 	cc->geom.y = area.y;
 diff --git a/conf.c b/conf.c
 index 5b11f67..1ea9c84 100644
 --- a/conf.c
