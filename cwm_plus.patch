@@ -1,5 +1,5 @@
 diff --git a/client.c b/client.c
-index afbf874..c78f2dd 100644
+index afbf874..dfca5af 100644
 --- a/client.c
 +++ b/client.c
 @@ -308,6 +308,8 @@ client_toggle_sticky(struct client_ctx *cc)
@@ -99,28 +99,32 @@ index afbf874..c78f2dd 100644
  				cc->bwidth = tc->bwidth;
  			}
  		}
-@@ -938,10 +956,6 @@ client_htile(struct client_ctx *cc)
+@@ -938,9 +956,11 @@ client_htile(struct client_ctx *cc)
  	if (n == 0)
  		return;
  
--	if (cc->flags & CLIENT_VMAXIMIZED ||
--	    cc->geom.h + (cc->bwidth * 2) >= area.h)
++	if (cc->flags & CLIENT_FULLSCREEN)
++		return;
+ 	if (cc->flags & CLIENT_VMAXIMIZED ||
+ 	    cc->geom.h + (cc->bwidth * 2) >= area.h)
 -		return;
--
++		cc->bwidth = Conf.bwidth;
+ 
  	cc->flags &= ~CLIENT_HMAXIMIZED;
  	cc->geom.x = area.x;
- 	cc->geom.y = area.y;
-@@ -1007,10 +1021,6 @@ client_vtile(struct client_ctx *cc)
+@@ -1007,9 +1027,11 @@ client_vtile(struct client_ctx *cc)
  	if (n == 0)
  		return;
  
--	if (cc->flags & CLIENT_HMAXIMIZED ||
--	    cc->geom.w + (cc->bwidth * 2) >= area.w)
++	if (cc->flags & CLIENT_FULLSCREEN)
++		return;
+ 	if (cc->flags & CLIENT_HMAXIMIZED ||
+ 	    cc->geom.w + (cc->bwidth * 2) >= area.w)
 -		return;
--
++		cc->bwidth = Conf.bwidth;
+ 
  	cc->flags &= ~CLIENT_VMAXIMIZED;
  	cc->geom.x = area.x;
- 	cc->geom.y = area.y;
 diff --git a/conf.c b/conf.c
 index 5b11f67..1ea9c84 100644
 --- a/conf.c
