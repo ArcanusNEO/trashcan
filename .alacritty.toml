@@ -2,6 +2,8 @@
 TERM = "xterm-256color"
 
 [window]
+decorations = "None"
+startup_mode = "Maximized"
 decorations_theme_variant = "Dark"
 resize_increments = true
 option_as_alt = "Both"
