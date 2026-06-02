@@ -506,6 +506,7 @@ gnuplot
 gnutls
 gobject-introspection
 google-go-lang
+gopls
 gpa
 gparted
 gperf
@@ -527,10 +528,12 @@ grub
 gsettings-desktop-schemas
 gsl
 gst-plugins-bad-free
+gst-plugins-bad-nonfree
 gst-plugins-base
 gst-plugins-good
 gst-plugins-libav
 gstreamer
+gstreamer-vaapi
 gtest
 gtk+
 gtk+2
@@ -916,6 +919,7 @@ libXvMC
 libXxf86dga
 libXxf86misc
 libXxf86vm
+libadwaita
 libaio
 libao
 libappindicator
@@ -1058,6 +1062,7 @@ libpwquality
 libqalculate
 libqmi
 libraw1394
+libressl
 librevenge
 librime
 librsvg
@@ -1124,6 +1129,7 @@ linux-faqs
 linux-howtos
 linuxdoc-tools
 listres
+llhttp
 llvm
 llvm13-compat
 llvm17-compat
