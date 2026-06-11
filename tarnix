@@ -8,7 +8,8 @@ fi
 
 prefix=$(echo "${prefix}" | tr -s '/' | sed 's|/$||')
 
-exec tar --create \
+exec tar "$@" \
+  --create \
   --preserve-permissions \
   --absolute-names \
   --one-file-system \
@@ -21,6 +22,5 @@ exec tar --create \
   --exclude="${prefix}"/tmp/* \
   --exclude="${prefix}"/var/tmp/* \
   --exclude="${prefix}"/lost+found \
-  "$@" \
   --transform="s|^${prefix}/||" \
   -- "${prefix}"/*/
