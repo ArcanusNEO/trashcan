@@ -2,7 +2,7 @@
 set -eo pipefail
 
 if test -z "$*" || [[ "$*" =~ --(help|usage) ]]; then
-  echo "Usage example: $0 vf /backup.tar.zst" >&2
+  echo "Usage example: $0 -vf /backup.tar.zst" >&2
   exit $(! test -z "$*")
 fi
 
