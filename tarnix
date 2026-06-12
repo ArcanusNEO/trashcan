@@ -2,7 +2,7 @@
 set -eo pipefail
 
 if test -z "$*" || [[ "$*" =~ --(help|usage) ]]; then
-  echo "Usage example: $0 -vf /backup.tar.zst" >&2
+  echo "Usage example: $0 -vf /snapshot.tar.zst" >&2
   exit $(! test -z "$*")
 fi
 
@@ -22,5 +22,4 @@ exec tar "$@" \
   --exclude="${prefix}"/tmp/* \
   --exclude="${prefix}"/var/tmp/* \
   --exclude="${prefix}"/lost+found \
-  --transform="s|^${prefix}/||" \
   -- "${prefix}"/*/
