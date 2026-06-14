@@ -1,0 +1,12 @@
+alias ifconfig='/sbin/ifconfig'
+alias ip='/sbin/ip -color=auto'
+PATH="$HOME/Applications${PATH:+:}$PATH"
+PATH="${PATH//:$HOME\/Applications/}"
+export PATH
+alias ec=emacsclientnw
+export EDITOR=emacsclientnw
+export VISUAL=emacsclientnw
+if [ -z "$DISPLAY" ]; then
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+fi

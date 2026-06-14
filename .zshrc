@@ -1,5 +1,5 @@
 setopt rmstarsilent
-export ZSH=/usr/share/oh-my-zsh
+export ZSH=/usr/local/share/ohmyzsh
 export ZSH_THEME=simple
 export DISABLE_AUTO_UPDATE=true
 export DISABLE_MAGIC_FUNCTIONS=true
@@ -9,10 +9,10 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 plugins=(
   git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 source "$ZSH/oh-my-zsh.sh"
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 PROMPT='%(?.%{$fg[green]%}.%{$fg[red]%})%?%{$fg_bold[blue]%}|%{$fg[green]%}%C%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[cyan]%}'
 if [[ $(id -u) -eq 0 ]]; then
   PROMPT+='# %{$reset_color%}'

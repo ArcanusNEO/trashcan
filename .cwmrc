@@ -16,7 +16,7 @@ unbind-mouse all
 
 bind-key 4-Return terminal
 bind-key 4-e "firefox"
-bind-key 4-t "mousepad"
+bind-key 4-t "emacs"
 bind-key 4-y "xfce4-clipman-history"
 bind-key 4-u "dolphin --new-window"
 bind-key 4-i "chromium-browser-ungoogled"
