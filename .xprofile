@@ -1,16 +1,16 @@
 export LANG=zh_CN.UTF-8
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export SDL_IM_MODULE=ibus
+export LC_ALL=zh_CN.UTF-8
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
-export QT_STYLE_OVERRIDE=kvantum
-export QT_WAYLAND_DECORATION=whitesur-gtk
+export GTK_THEME=Greybird
+export QT_STYLE_OVERRIDE=Oxygen
+export XCURSOR_THEME=Oxygen_Zion
 
-export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
 
-export PROTON_ENABLE_WAYLAND=1
 export PROTON_USE_WOW64=1
 export PROTON_USE_NTSYNC=1
 export VKD3D_CONFIG=dxr11,dxr
