@@ -55,6 +55,7 @@ alias wget="wget -U'$UA_OSX'"
 alias aget="aria2c -c -x16 -k1M -U'$UA_OSX'"
 export EDITOR=qe
 export VISUAL='emacsclient -tc -a "emacs -nw"'
+export ESCDELAY=0
 alias wineinit='winetricks -q vcrun6 vcrun6sp6 riched20 riched30 richtx32 msctf msftedit autostart_winedbg=disabled'
 export WINEPREFIX="$HOME/wine/default"
 export WINEARCH=wow64
