@@ -26,6 +26,7 @@ alias cls='printf "\033[2J\033[3J\033[1;1H"'
 alias switcheroo='envycontrol --verbose --coolbits 24 --switch'
 export EDITOR=vi
 # export VISUAL='emacsclient -tc -a "emacs -nw"'
+export ESCDELAY=0
 export WINEPREFIX="$HOME/wine/default"
 export WINEARCH=wow64
 export WINEDEBUG=-all
