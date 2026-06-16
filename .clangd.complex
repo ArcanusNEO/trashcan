@@ -1,7 +1,11 @@
 Index:
   StandardLibrary: Yes
 CompileFlags:
-  Add: [-fwrapv, -fms-extensions, -Wall, -Wvla, -Wno-parentheses, -Wno-microsoft-anon-tag]
+  Add: [-fms-extensions, -Wall, -Wvla]
+Diagnostics:
+  ClangTidy:
+    Add: [bugprone*, cert*, concurrency*, cppcoreguidelines*, misc*, modernize*, performance*]
+    FastCheckFilter: Strict
 
 ---
 If:
