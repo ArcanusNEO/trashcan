@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
 
 int
 intercept_input (Display *display)
@@ -15,10 +13,9 @@ intercept_input (Display *display)
   KeyCode left_ctrl_code = XKeysymToKeycode (display, XK_Control_L);
   KeyCode right_ctrl_code = XKeysymToKeycode (display, XK_Control_R);
   KeyCode c_code = XKeysymToKeycode (display, XK_c);
-
   unsigned long ctrl = 0;
 
-  while (1)
+  for (;;)
     {
       XEvent event;
       XNextEvent (display, &event);
@@ -81,24 +78,24 @@ main (int argc, char *argv[])
       if (waitpid (pid, NULL, WNOHANG) == 0)
         kill (pid, SIGTERM);
       if (waitpid (pid, NULL, 0) < 0)
-        goto ABORT;
+        goto FAIL;
     }
   else if (pid == 0)
     {
       execvp (argv[1], argv + 1);
-      while (1)
+      for (;;)
         getchar ();
     }
   else
     {
       fprintf (stderr, "Failed to spawn child process\n");
-      goto ABORT;
+      goto FAIL;
     }
 
   XCloseDisplay (display);
   exit (EXIT_SUCCESS);
 
-ABORT:
+FAIL:
   XCloseDisplay (display);
   exit (EXIT_FAILURE);
 }
