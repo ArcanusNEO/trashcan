@@ -6,10 +6,15 @@
 # anything that needs to be run at shutdown time you can
 # make an /etc/rc.d/rc.local_shutdown script and put those
 # commands in there.
+set -eo pipefail
 
 if [ -x /etc/rc.d/rc.emacs ]; then
   /etc/rc.d/rc.emacs start
   /sbin/runuser -u lucas -- /etc/rc.d/rc.emacs start
+fi
+
+if [ -x /etc/rc.d/rc.wireguard ]; then
+  /etc/rc.d/rc.wireguard start wg0
 fi
 
 if [ -x /usr/local/etc/rc.d/rc.mihomo ]; then

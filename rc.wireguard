@@ -1,0 +1,33 @@
+#!/bin/bash
+set -eo pipefail
+
+wireguard_start() {
+  if [ -e /etc/wireguard/"$*".conf ]; then
+    echo "Starting wireguard:  /usr/bin/wg-quick up $*"
+    /usr/bin/wg-quick up "$*" >/dev/null 2>&1 &
+  fi
+}
+
+wireguard_stop() {
+  echo "Stopping wireguard..."
+  /usr/bin/wg-quick down "$*"
+}
+
+wireguard_restart() {
+  wireguard_stop
+  wireguard_start
+}
+
+case "$1" in
+  'start')
+    wireguard_start "$2"
+    ;;
+  'stop')
+    wireguard_stop "$2"
+    ;;
+  'restart')
+    wireguard_restart "$2"
+    ;;
+  *)
+    echo "usage $0 start|stop|restart"
+esac

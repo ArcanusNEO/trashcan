@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 if [ -x /etc/rc.d/rc.adb ]; then
   /etc/rc.d/rc.adb stop
@@ -10,6 +11,10 @@ fi
 
 if [ -x /usr/local/etc/rc.d/rc.mihomo ]; then
   /usr/local/etc/rc.d/rc.mihomo stop
+fi
+
+if [ -x /etc/rc.d/rc.wireguard ]; then
+  /etc/rc.d/rc.wireguard stop wg0
 fi
 
 if [ -x /etc/rc.d/rc.emacs ]; then
