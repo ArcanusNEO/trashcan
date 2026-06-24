@@ -1,5 +1,4 @@
-#!/bin/bash
-set -eo pipefail
+#!/bin/sh
 
 wireguard_start() {
   if [ -e /etc/wireguard/"$*".conf ]; then

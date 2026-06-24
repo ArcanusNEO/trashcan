@@ -1,5 +1,4 @@
-#!/bin/bash
-set -eo pipefail
+#!/bin/sh
 
 adb_start() {
   if [ -x /usr/bin/adb ]; then

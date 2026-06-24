@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 # Start/stop/restart the emacs daemon.
-set -eo pipefail
 
 . /etc/profile
 if [ -r ~/."${SHELL##*/}"rc ]; then

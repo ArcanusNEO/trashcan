@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # /etc/rc.d/rc.local:  Local system initialization script.
 #
@@ -6,7 +6,6 @@
 # anything that needs to be run at shutdown time you can
 # make an /etc/rc.d/rc.local_shutdown script and put those
 # commands in there.
-set -eo pipefail
 
 if [ -x /etc/rc.d/rc.emacs ]; then
   /etc/rc.d/rc.emacs start
