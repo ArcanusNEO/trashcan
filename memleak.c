@@ -4,6 +4,7 @@ cc -ggdb3 -O2 -fwrapv -fms-extensions -Wall -Wvla -Wno-parentheses -Wno-microsof
 ret="$?"
 rm -f -- "$exe"
 exit "$ret"
+static_assert (0, "unreachable");
 #endif
 #include "cmacs.h"
 
