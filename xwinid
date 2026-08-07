@@ -1,5 +1,5 @@
-#!/bin/sh
-set -e
+#!/bin/bash
+set -eo pipefail
 if [ -z "$@" ]; then
   exec xwininfo | grep 'Window id' | awk '{match($0, /0x\w+/, a); print a[0]}'
 else
