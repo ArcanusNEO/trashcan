@@ -62,6 +62,7 @@ export WINEPREFIX="$HOME/wine/default"
 export WINEARCH=wow64
 export WINEDEBUG=-all
 export WINETRICKS_DOWNLOADER=wget
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 unset DEBUGINFOD_URLS
 unalias cd &>/dev/null
 PATH="$HOME/.local/bin:"${PATH-/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games}":/opt/bin"
