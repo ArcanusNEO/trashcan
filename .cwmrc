@@ -32,6 +32,13 @@ bind-key S-Print "xfce4-screenshooter"
 bind-key 4S-x "xkill"
 bind-key 4S-backslash "xunmap"
 
+bind-key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +2%"
+bind-key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+bind-key XF86AudioMute "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bind-key XF86AudioPlay "playerctl play-pause"
+bind-key XF86AudioNext "playerctl next"
+bind-key XF86AudioPrev "playerctl previous"
+
 bind-key 4S-r restart
 bind-key 4-q lock
 bind-key 4-r menu-exec
