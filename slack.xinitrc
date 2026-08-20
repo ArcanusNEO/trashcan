@@ -48,6 +48,7 @@ volctl & \
 fcitx5 -dr & \
 xfce4-clipman & \
 nm-applet & \
+blueman-applet & \
 ' &
 
 # picom --backend=xrender --no-vsync --no-fading-openclose --unredir-if-possible --blur-method=none --use-damage &
