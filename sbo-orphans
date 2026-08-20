@@ -1,0 +1,156 @@
+#!/bin/bash
+#
+# sbo-orphans - Find installed SBo packages that no other installed
+#                  package depends on ("leaf" packages).
+#
+# Data sources:
+#   /var/log/packages/*_SBo        installed SBo packages
+#   /var/lib/sbopkg/SBo/<rel>/*/*/*.info   REQUIRES= dependency metadata
+#
+# Exit codes: 0 ok, 1 usage/environment error
+
+set -eo pipefail
+
+PKGLOG=${PKGLOG:-/var/log/packages}
+SBOROOT=${SBOROOT:-/var/lib/sbopkg/SBo}
+TAG=${TAG:-_SBo}
+
+show_deps=0
+show_missing=0
+quiet=0
+release=""
+
+usage() {
+	cat <<EOF
+Usage: sbo-orphans [options]
+
+Lists installed SBo packages that are not required by any other
+installed SBo package.
+
+Options:
+  -r REL    SBo release tree to use (default: newest under $SBOROOT)
+  -d        also print the dependencies of each orphan
+  -m        report installed SBo packages with no .info found
+  -q        print bare package names only (script friendly)
+  -h        this help
+
+Environment overrides: PKGLOG, SBOROOT, TAG
+EOF
+}
+
+while getopts 'r:dmqh' opt; do
+	case $opt in
+	r) release=$OPTARG ;;
+	d) show_deps=1 ;;
+	m) show_missing=1 ;;
+	q) quiet=1 ;;
+	h)
+		usage
+		exit 0
+		;;
+	*)
+		usage >&2
+		exit 1
+		;;
+	esac
+done
+
+[ -d "$PKGLOG" ] || {
+	echo "sbo-orphans: no package database: $PKGLOG" >&2
+	exit 1
+}
+[ -d "$SBOROOT" ] || {
+	echo "sbo-orphans: no sbopkg repo: $SBOROOT" >&2
+	exit 1
+}
+
+# --- locate the repository tree -------------------------------------------
+if [ -n "$release" ]; then
+	SBOTREE=$SBOROOT/$release
+else
+	SBOTREE=$(find "$SBOROOT" -mindepth 1 -maxdepth 1 -type d |
+		sort -V | tail -n 1)
+fi
+[ -d "$SBOTREE" ] || {
+	echo "sbo-orphans: no such release tree: $SBOTREE" >&2
+	exit 1
+}
+
+declare -A INSTALLED # PRGNAM -> full package-log name
+declare -A INFO      # PRGNAM -> path to .info
+declare -A DEPS      # PRGNAM -> space separated REQUIRES
+declare -A NEEDEDBY  # PRGNAM -> space separated reverse deps
+declare -a MISSING   # installed SBo pkgs with no .info
+
+# --- 1. installed SBo packages ---------------------------------------------
+# Log names are  <prgnam>-<version>-<arch>-<build><TAG>; the version may
+# itself contain dashes, so strip exactly the last three fields.
+for path in "$PKGLOG"/*"$TAG"; do
+	[ -e "$path" ] || continue
+	pkg=${path##*/}
+	prgnam=${pkg%-*-*-*}
+	[ -n "$prgnam" ] && INSTALLED[$prgnam]=$pkg
+done
+
+if [ ${#INSTALLED[@]} -eq 0 ]; then
+	echo "sbo-orphans: no packages tagged '$TAG' installed" >&2
+	exit 0
+fi
+
+# --- 2. index the .info files (single pass over the repo) -------------------
+while IFS= read -r info; do
+	dir=${info%/*}
+	INFO[${dir##*/}]=$info
+done < <(find "$SBOTREE" -mindepth 3 -maxdepth 3 -name '*.info')
+
+# --- 3. read REQUIRES for each installed package ---------------------------
+for prgnam in "${!INSTALLED[@]}"; do
+	info=${INFO[$prgnam]}
+	if [ -z "$info" ]; then
+		MISSING+=("$prgnam")
+		continue
+	fi
+	# Only trust the REQUIRES line; never source untrusted .info files.
+	req=$(sed -n 's/^REQUIRES="\(.*\)"[[:space:]]*$/\1/p' "$info")
+	list=""
+	for dep in $req; do
+		# %README% is a manual-action marker, not a package
+		[ "$dep" = "%README%" ] && continue
+		list+=" $dep"
+		# Only count reverse deps coming from installed packages
+		NEEDEDBY[$dep]+=" $prgnam"
+	done
+	DEPS[$prgnam]=${list# }
+done
+
+# --- 4. report -------------------------------------------------------------
+orphans=()
+for prgnam in "${!INSTALLED[@]}"; do
+	[ -n "${NEEDEDBY[$prgnam]}" ] && continue
+	orphans+=("$prgnam")
+done
+
+if [ ${#orphans[@]} -gt 0 ]; then
+	while IFS= read -r prgnam; do
+		if [ "$quiet" = 1 ]; then
+			printf '%s\n' "$prgnam"
+		else
+			printf '%-30s %s\n' "$prgnam" "${INSTALLED[$prgnam]}"
+			[ "$show_deps" = 1 ] && [ -n "${DEPS[$prgnam]}" ] &&
+				printf '%-30s   requires: %s\n' "" "${DEPS[$prgnam]}"
+		fi
+	done < <(printf '%s\n' "${orphans[@]}" | sort)
+fi
+
+if [ "$quiet" != 1 ]; then
+	printf '\n%d of %d installed %s packages are not required by any other.\n' \
+		"${#orphans[@]}" "${#INSTALLED[@]}" "$TAG"
+	printf 'Repository: %s\n' "$SBOTREE"
+fi
+
+if [ "$show_missing" = 1 ] && [ ${#MISSING[@]} -gt 0 ]; then
+	printf '\nNo .info in repository (removed from SBo, renamed, or non-SBo):\n'
+	printf '%s\n' "${MISSING[@]}" | sort | sed 's/^/  /'
+fi
+
+exit 0
