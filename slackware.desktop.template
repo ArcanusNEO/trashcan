@@ -22,7 +22,6 @@ SDL2_image
 SDL2_mixer
 SDL2_net
 SDL2_ttf
-Sphinx
 UASM
 a2ps
 a52dec
@@ -176,6 +175,7 @@ audacious
 audacious-plugins
 audiocd-kio
 audiofile
+audit
 autoconf
 autoconf-archive
 autofs
@@ -249,6 +249,7 @@ clucene
 cmake
 compiz
 conntrack-tools
+cool-retro-term
 coreutils
 cpio
 cpufrequtils
@@ -269,6 +270,7 @@ daemon
 dash
 dav1d
 db48
+dbeaver-ce
 dbus
 dbus-glib
 dbus-python
@@ -301,7 +303,7 @@ dolphin
 dolphin-plugins
 dosfstools
 dotconf
-dotnet-runtime-8.0
+dotnet-sdk-10.0
 dovecot
 doxygen
 dpkg
@@ -919,6 +921,7 @@ libXvMC
 libXxf86dga
 libXxf86misc
 libXxf86vm
+libaal
 libadwaita
 libaio
 libao
@@ -1061,6 +1064,7 @@ libpthread-stubs
 libpwquality
 libqalculate
 libqmi
+libr3
 libraw1394
 libressl
 librevenge
@@ -1086,6 +1090,7 @@ libtheora
 libtiff
 libtirpc
 libtool
+libtraceevent
 libunistring
 libunwind
 liburcu
@@ -1193,6 +1198,7 @@ mobile-broadband-provider-info
 moc
 modemmanager-qt
 moreutils
+mosh
 most
 motif
 mousepad
@@ -1304,6 +1310,7 @@ pango
 pangomm
 parallel
 parley
+partclone
 parted
 partitionmanager
 patch
@@ -1315,8 +1322,10 @@ pcmciautils
 pcre
 pcre2
 pcsc-lite
+perf
 perl
 perl-Algorithm-Diff
+perl-IO-Tty
 perl-Regexp-Common
 perl-Role-Tiny
 perl-Sub-Uplevel
@@ -1357,6 +1366,7 @@ plasma-vault
 plasma-wayland-protocols
 plasma-workspace
 plasma-workspace-wallpapers
+playerctl
 plzip
 pmake
 poke
@@ -1385,6 +1395,7 @@ pssh
 pulseaudio
 pulseaudio-qt
 purpose
+pv
 pycairo
 pycups
 pycurl
@@ -1454,6 +1465,7 @@ python3-parso
 python3-pathspec
 python3-pluggy
 python3-psutil
+python3-pulsectl
 python3-py-cpuinfo
 python3-pymdstat
 python3-pyproject-hooks
@@ -1471,6 +1483,7 @@ qca
 qemu
 qemu-guest-agent
 qemu-static
+qmltermwidget
 qpdf
 qqc2-breeze-style
 qqc2-desktop-style
@@ -1494,6 +1507,7 @@ reiserfsprogs
 rendercheck
 rgb
 rinutils
+ripgrep
 rocs
 rp-pppoe
 rpcbind
@@ -1548,6 +1562,7 @@ sinhala_lklug-font-ttf
 sip
 skanlite
 skkdic
+slack-utils
 slackpkg+
 slackpkg
 slacktrack
@@ -1557,7 +1572,6 @@ slrn
 smartmontools
 smproxy
 snappy
-snowballstemmer
 snownews
 socat
 sof-firmware
@@ -1566,19 +1580,10 @@ soma
 sonnet
 sound-theme-freedesktop
 sox
-spdlog
 spectacle
 speech-dispatcher
 speex
 speexdsp
-sphinx-rtd-theme
-sphinxcontrib-applehelp
-sphinxcontrib-devhelp
-sphinxcontrib-htmlhelp
-sphinxcontrib-jquery
-sphinxcontrib-jsmath
-sphinxcontrib-qthelp
-sphinxcontrib-serializinghtml
 spice
 spice-guest-tools
 spice-protocol
@@ -1658,6 +1663,7 @@ udisks2
 ulogd
 umbrello
 unarj
+unclutter-xfixes
 undervolt
 unrar
 upower
@@ -1672,9 +1678,11 @@ uthash
 util-linux
 util-macros
 uucp
+uv-bin
 v4l-utils
 v4l2loopback
 vala
+valgrind
 vbetool
 vde2
 vid.stab
@@ -1683,8 +1691,8 @@ vim
 vim-gvim
 virglrenderer
 vlan
+volctl
 volume_key
-volumeicon
 vorbis-tools
 vsftpd
 vte
@@ -1704,6 +1712,7 @@ winetricks
 wireguard-tools
 wireless_tools
 wireplumber
+wmctrl
 woff2
 wpa_supplicant
 wqy-zenhei-font-ttf
@@ -1907,5 +1916,6 @@ zlib
 zoo
 zsh
 zstd
+zulu-openjdk17
 zulu-openjdk25
 zulu-openjdk8
