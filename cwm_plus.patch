@@ -185,3 +185,19 @@ index 5b11f67..1ea9c84 100644
  			break;
  		}
  	}
+diff --git a/xevents.c b/xevents.c
+index 1603543..2362401 100644
+--- a/xevents.c
++++ b/xevents.c
+@@ -108,8 +108,10 @@ xev_handle_unmapnotify(XEvent *ee)
+ 		if (e->send_event) {
+ 			xu_set_wm_state(cc->win, WithdrawnState);
+ 		} else {
+-			if (!(cc->flags & CLIENT_HIDDEN))
++			if (!(cc->flags & CLIENT_HIDDEN)) {
++				xu_set_wm_state(cc->win, WithdrawnState);
+ 				client_remove(cc);
++			}
+ 		}
+ 	}
+ }
