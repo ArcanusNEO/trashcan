@@ -42,10 +42,13 @@ echo 62015 >/sys/class/backlight/intel_backlight/brightness
 
 tint2 &
 /usr/lib64/xfce4/notifyd/xfce4-notifyd &
-volumeicon &
-fcitx5 -dr &
-xfce4-clipman &
-nm-applet &
+
+sleep 1 && dash -c ' \
+volctl & \
+fcitx5 -dr & \
+xfce4-clipman & \
+nm-applet & \
+' &
 
 # picom --backend=xrender --no-vsync --no-fading-openclose --unredir-if-possible --blur-method=none --use-damage &
 
