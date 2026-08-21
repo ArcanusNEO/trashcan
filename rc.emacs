@@ -2,8 +2,9 @@
 # Start/stop/restart the emacs daemon.
 
 . /etc/profile
-if [ -r ~/."${SHELL##*/}"rc ]; then
-  . ~/."${SHELL##*/}"rc
+USER_LOGIN_SHELL="$(basename `getent passwd $USER | cut -d: -f7`)"
+if [ -r ~/."${USER_LOGIN_SHELL}"rc ]; then
+  . ~/."${USER_LOGIN_SHELL}"rc
 fi
 unset XDG_RUNTIME_DIR
 

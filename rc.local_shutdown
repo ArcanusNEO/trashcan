@@ -17,6 +17,6 @@ if [ -x /etc/rc.d/rc.wireguard ]; then
 fi
 
 if [ -x /etc/rc.d/rc.emacs ]; then
-  /sbin/runuser -u lucas -- /etc/rc.d/rc.emacs stop
-  /etc/rc.d/rc.emacs stop
+  /sbin/runuser -u lucas -- /bin/zsh /etc/rc.d/rc.emacs stop
+  /bin/bash /etc/rc.d/rc.emacs stop
 fi

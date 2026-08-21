@@ -8,8 +8,8 @@
 # commands in there.
 
 if [ -x /etc/rc.d/rc.emacs ]; then
-  /etc/rc.d/rc.emacs start
-  /sbin/runuser -u lucas -- /etc/rc.d/rc.emacs start
+  /bin/bash /etc/rc.d/rc.emacs start
+  /sbin/runuser -u lucas -- /bin/zsh /etc/rc.d/rc.emacs start
 fi
 
 if [ -x /etc/rc.d/rc.wireguard ]; then
