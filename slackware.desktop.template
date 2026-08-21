@@ -175,6 +175,7 @@ audacious
 audacious-plugins
 audiocd-kio
 audiofile
+audit
 autoconf
 autoconf-archive
 autofs
@@ -248,6 +249,7 @@ clucene
 cmake
 compiz
 conntrack-tools
+cool-retro-term
 coreutils
 cpio
 cpufrequtils
@@ -301,8 +303,6 @@ dolphin
 dolphin-plugins
 dosfstools
 dotconf
-dotnet-runtime-10.0
-dotnet-runtime-8.0
 dotnet-sdk-10.0
 dovecot
 doxygen
@@ -597,7 +597,6 @@ indent
 inetd
 infozip
 inih
-iniparser
 inotify-tools
 intel-gmmlib
 intel-media-driver
@@ -628,7 +627,6 @@ jfsutils
 jmtpfs
 joe
 jove
-jq
 json-c
 json-glib
 judy
@@ -1066,6 +1064,7 @@ libpthread-stubs
 libpwquality
 libqalculate
 libqmi
+libr3
 libraw1394
 libressl
 librevenge
@@ -1484,6 +1483,7 @@ qca
 qemu
 qemu-guest-agent
 qemu-static
+qmltermwidget
 qpdf
 qqc2-breeze-style
 qqc2-desktop-style
@@ -1663,6 +1663,7 @@ udisks2
 ulogd
 umbrello
 unarj
+unclutter-xfixes
 undervolt
 unrar
 upower
@@ -1711,6 +1712,7 @@ winetricks
 wireguard-tools
 wireless_tools
 wireplumber
+wmctrl
 woff2
 wpa_supplicant
 wqy-zenhei-font-ttf
@@ -1904,7 +1906,6 @@ yakuake
 yaml-cpp
 yasm
 yptools
-yq
 yt-dlp
 ytalk
 zanshin
@@ -1915,5 +1916,6 @@ zlib
 zoo
 zsh
 zstd
+zulu-openjdk17
 zulu-openjdk25
 zulu-openjdk8
