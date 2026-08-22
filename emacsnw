@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/bin/dash
 exec /usr/bin/emacs -nw "$@"
