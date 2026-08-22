@@ -2,6 +2,7 @@
 # Start/stop/restart the emacs daemon.
 
 . /etc/profile
+USER="$(whoami)"
 USER_LOGIN_SHELL="$(basename `getent passwd $USER | cut -d: -f7`)"
 if [ -r ~/."${USER_LOGIN_SHELL}"rc ]; then
   . ~/."${USER_LOGIN_SHELL}"rc
