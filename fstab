@@ -1,19 +1,31 @@
-# Static information about the filesystems.
-# See fstab(5) for details.
+/dev/nvme0n1p1 /boot/efi vfat defaults,fmask=0177,dmask=0077 1 0
+/dev/nvme0n1p2 / xfs defaults 1 1
+UUID=0cdd87af-fd5d-4d72-99eb-ffd202bafd6f swap swap defaults 0 0
+# /dev/cdrom /mnt/cdrom auto noauto,owner,ro,comment=x-gvfs-show 0 0
+# /dev/fd0 /mnt/floppy auto noauto,owner 0 0
+devpts /dev/pts devpts gid=5,mode=620 0 0
+proc /proc proc defaults 0 0
+tmpfs /dev/shm tmpfs nosuid,nodev,noexec 0 0
+tmpfs /tmp tmpfs nosuid,nodev 0 0
+tmpfs /var/log/pkgtools/removed_packages tmpfs mode=0755,nosuid,nodev 0 0
+tmpfs /var/log/pkgtools/removed_scripts tmpfs mode=0755,nosuid,nodev 0 0
+tmpfs /var/log/pkgtools/removed_uninstall_scripts tmpfs mode=0755,nosuid,nodev 0 0
+tmpfs /var/log/sbopkg tmpfs mode=0755,nosuid,nodev 0 0
 
-# <file system> <dir> <type> <options> <dump> <pass>
-# /dev/nvme0n1p4
-UUID=dc2152e7-e9a9-4626-8ceb-07eb628cf298	/         	ext4      	rw,relatime	0 1
-
-# /dev/nvme0n1p1
-UUID=EBFA-C14D      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
-
-# /dev/nvme0n1p5 LABEL=Windows
-UUID=299D817A2D97AD94	/media/Windows	ntfs3      	rw,nosuid,nodev,noatime,uid=0,gid=wheel,dmask=002,fmask=113 0 0
-
-# /dev/nvme0n1p6 LABEL=Storage
-UUID=225A6D42D4FA828F	/media/Storage	ntfs3      	rw,nosuid,nodev,noatime,uid=0,gid=wheel,dmask=002,fmask=113 0 0
-
-# /dev/nvme0n1p3
-UUID=207f230e-f486-4136-8059-152bf5d870cd	none      	swap      	defaults  	0 0
-
+UUID=34f112de-bf99-448a-aec2-48885fc7382b /media/storage0 ext4 defaults 0 0
+/media/storage0/Applications /home/lucas/Applications none bind,uid=1000,gid=1000 0 0
+/media/storage0/Comics /home/lucas/Comics none bind,uid=1000,gid=1000 0 0
+/media/storage0/Desktop /home/lucas/Desktop none bind,uid=1000,gid=1000 0 0
+/media/storage0/Documents /home/lucas/Documents none bind,uid=1000,gid=1000 0 0
+/media/storage0/Downloads /home/lucas/Downloads none bind,uid=1000,gid=1000 0 0
+/media/storage0/Games /home/lucas/Games none bind,uid=1000,gid=1000 0 0
+/media/storage0/Library /home/lucas/Library none bind,uid=1000,gid=1000 0 0
+/media/storage0/Movies /home/lucas/Movies none bind,uid=1000,gid=1000 0 0
+/media/storage0/Music /home/lucas/Music none bind,uid=1000,gid=1000 0 0
+/media/storage0/Pictures /home/lucas/Pictures none bind,uid=1000,gid=1000 0 0
+/media/storage0/Projects /home/lucas/Projects none bind,uid=1000,gid=1000 0 0
+/media/storage0/Public /home/lucas/Public none bind,uid=1000,gid=1000 0 0
+/media/storage0/Resources /home/lucas/Resources none bind,uid=1000,gid=1000 0 0
+/media/storage0/Templates /home/lucas/Templates none bind,uid=1000,gid=1000 0 0
+/media/storage0/Temporary /home/lucas/Temporary none bind,uid=1000,gid=1000 0 0
+/media/storage0/Videos /home/lucas/Videos none bind,uid=1000,gid=1000 0 0
