@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# sbo-orphans - Find installed SBo packages that no other installed
-#                  package depends on ("leaf" packages).
+# sborphans - Find installed SBo packages that no other installed
+#             package depends on ("leaf" packages).
 #
 # Data sources:
 #   /var/log/packages/*_SBo        installed SBo packages
@@ -22,7 +22,7 @@ release=""
 
 usage() {
 	cat <<EOF
-Usage: sbo-orphans [options]
+Usage: sborphans [options]
 
 Lists installed SBo packages that are not required by any other
 installed SBo package.
@@ -56,15 +56,15 @@ while getopts 'r:dmqh' opt; do
 done
 
 [ -d "$PKGLOG" ] || {
-	echo "sbo-orphans: no package database: $PKGLOG" >&2
+	echo "sborphans: no package database: $PKGLOG" >&2
 	exit 1
 }
 [ -d "$SBOROOT" ] || {
-	echo "sbo-orphans: no sbopkg repo: $SBOROOT" >&2
+	echo "sborphans: no sbopkg repo: $SBOROOT" >&2
 	exit 1
 }
 
-# --- locate the repository tree -------------------------------------------
+# ---- locate the repository tree ----
 if [ -n "$release" ]; then
 	SBOTREE=$SBOROOT/$release
 else
@@ -72,7 +72,7 @@ else
 		sort -V | tail -n 1)
 fi
 [ -d "$SBOTREE" ] || {
-	echo "sbo-orphans: no such release tree: $SBOTREE" >&2
+	echo "sborphans: no such release tree: $SBOTREE" >&2
 	exit 1
 }
 
@@ -82,7 +82,7 @@ declare -A DEPS      # PRGNAM -> space separated REQUIRES
 declare -A NEEDEDBY  # PRGNAM -> space separated reverse deps
 declare -a MISSING   # installed SBo pkgs with no .info
 
-# --- 1. installed SBo packages ---------------------------------------------
+# ---- 1. installed SBo packages ----
 # Log names are  <prgnam>-<version>-<arch>-<build><TAG>; the version may
 # itself contain dashes, so strip exactly the last three fields.
 for path in "$PKGLOG"/*"$TAG"; do
@@ -93,17 +93,17 @@ for path in "$PKGLOG"/*"$TAG"; do
 done
 
 if [ ${#INSTALLED[@]} -eq 0 ]; then
-	echo "sbo-orphans: no packages tagged '$TAG' installed" >&2
+	echo "sborphans: no packages tagged '$TAG' installed" >&2
 	exit 0
 fi
 
-# --- 2. index the .info files (single pass over the repo) -------------------
+# ---- 2. index the .info files (single pass over the repo) ----
 while IFS= read -r info; do
 	dir=${info%/*}
 	INFO[${dir##*/}]=$info
 done < <(find "$SBOTREE" -mindepth 3 -maxdepth 3 -name '*.info')
 
-# --- 3. read REQUIRES for each installed package ---------------------------
+# ---- 3. read REQUIRES for each installed package ----
 for prgnam in "${!INSTALLED[@]}"; do
 	info=${INFO[$prgnam]}
 	if [ -z "$info" ]; then
@@ -123,7 +123,7 @@ for prgnam in "${!INSTALLED[@]}"; do
 	DEPS[$prgnam]=${list# }
 done
 
-# --- 4. report -------------------------------------------------------------
+# ---- 4. report ----
 orphans=()
 for prgnam in "${!INSTALLED[@]}"; do
 	[ -n "${NEEDEDBY[$prgnam]}" ] && continue
