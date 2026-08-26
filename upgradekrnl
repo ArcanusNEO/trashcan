@@ -1,5 +1,6 @@
 #!/bin/bash
-set -e
+set -eo pipefail
+
 MIRROR='http://mirrors.tuna.tsinghua.edu.cn/slackware/slackware64-current'
 
 wget() {
@@ -7,11 +8,11 @@ wget() {
 }
 
 fname() {
-  grep -F "PACKAGE NAME:  $*" | awk -F'  ' '{print $2}'
+  grep -F "PACKAGE NAME:  $*" | awk -F':  ' '{print $2}'
 }
 
 fpath() {
-  grep -FA1 "PACKAGE NAME:  $*" | awk -F'  ' '{print $2}' | tac | sed -z 's|\n|/|'
+  grep -FA1 "PACKAGE NAME:  $*" | awk -F':  ' '{print $2}' | tac | sed -z 's|\n|/|'
 }
 
 upgrade() {
