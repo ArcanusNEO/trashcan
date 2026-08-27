@@ -270,7 +270,6 @@ daemon
 dash
 dav1d
 db48
-dbeaver-ce
 dbus
 dbus-glib
 dbus-python
@@ -298,7 +297,6 @@ djvulibre
 dmapi
 dmidecode
 dnsmasq
-dog
 dolphin
 dolphin-plugins
 dosfstools
@@ -761,7 +759,6 @@ kitemmodels
 kitemviews
 kiten
 kitinerary
-kitty
 kjobwidgets
 kjots
 kjs
