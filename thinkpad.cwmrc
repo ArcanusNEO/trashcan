@@ -29,6 +29,7 @@ bind-key 4-F9 "touchpad.toggle"
 bind-key Print "xfce4-screenshooter -f"
 bind-key 4-Print "xfce4-screenshooter -w"
 bind-key S-Print "xfce4-screenshooter"
+bind-key XF86Launch2 "xfce4-screenshooter"
 bind-key 4S-x "xkill"
 bind-key 4S-backslash "xunmap"
 
