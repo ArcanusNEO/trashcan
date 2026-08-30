@@ -1,0 +1,126 @@
+fontname "sans-serif:pixelsize=14:bold"
+
+gap 48 0 0 0
+ignore SculcV0z5lqfutint2pkDxHTvWFKpE
+sticky yes
+
+autogroup 0 "Mail", "thunderbird-default"
+autogroup 0 "audacious", "Audacious"
+autogroup 0 "netease-cloud-music-web-player", "netease-cloud-music-web-player"
+
+command term "alacritty msg create-window"
+command lock "xlock -mode blank"
+
+unbind-key all
+unbind-mouse all
+
+bind-key 4-Return terminal
+bind-key 4-e "firefox"
+bind-key 4-t "emacs"
+bind-key 4-y "xfce4-clipman-history"
+bind-key 4-u "dolphin --new-window"
+bind-key 4-i "chromium-browser-ungoogled"
+bind-key 4-c "xcalc"
+
+bind-key XF86MonBrightnessDown "backlightctl -31"
+bind-key XF86MonBrightnessUp "backlightctl +31"
+bind-key 4-F7 "xrandr --output eDP-1 --primary --mode 2880x1800 --rate 120 --dpi 192"
+bind-key 4-F9 "touchpad.toggle"
+bind-key Print "xfce4-screenshooter -f"
+bind-key 4-Print "xfce4-screenshooter -w"
+bind-key S-Print "xfce4-screenshooter"
+bind-key 4S-x "xkill"
+bind-key 4S-backslash "xunmap"
+
+bind-key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +2%"
+bind-key 4-Up "pactl set-sink-volume @DEFAULT_SINK@ +2%"
+bind-key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+bind-key 4-Down "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+bind-key XF86AudioMute "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bind-key 4-m "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+bind-key XF86AudioMicMute "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+bind-key 4-n "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+bind-key XF86AudioPlay "playerctl play-pause"
+bind-key 4-p "playerctl play-pause"
+bind-key XF86AudioNext "playerctl next"
+bind-key 4-Right "playerctl next"
+bind-key XF86AudioPrev "playerctl previous"
+bind-key 4-Left "playerctl previous"
+
+bind-key 4S-r restart
+bind-key 4-q lock
+bind-key 4-r menu-exec
+bind-key 4-s menu-ssh
+bind-key 4-space menu-window
+bind-key 4-x window-close
+bind-key 4-o window-maximize
+bind-key 4-f window-fullscreen
+bind-key 4-d group-toggle-all
+bind-key 4-g window-group
+bind-key 4-backslash window-hide
+
+bind-key 4-v window-vtile
+bind-key 4-w window-htile
+bind-key 4S-v window-vmaximize
+bind-key 4S-w window-hmaximize
+
+bind-key M-Tab window-cycle
+bind-key MS-Tab window-rcycle
+bind-key M-grave window-cycle-ingroup
+bind-key MS-grave window-rcycle-ingroup
+bind-key 4-Tab group-cycle
+bind-key 4S-Tab group-rcycle
+bind-key 4-grave group-last
+
+bind-key 4-h window-snap-left
+bind-key 4-j window-snap-down
+bind-key 4-k window-snap-up
+bind-key 4-l window-snap-right
+bind-key 4M-h window-move-left-big
+bind-key 4M-j window-move-down-big
+bind-key 4M-k window-move-up-big
+bind-key 4M-l window-move-right-big
+bind-key 4S-h window-resize-left-big
+bind-key 4S-j window-resize-down-big
+bind-key 4S-k window-resize-up-big
+bind-key 4S-l window-resize-right-big
+
+bind-key 4-1 group-only-1
+bind-key 4-2 group-only-2
+bind-key 4-3 group-only-3
+bind-key 4-4 group-only-4
+bind-key 4-5 group-only-5
+bind-key 4-6 group-only-6
+bind-key 4-7 group-only-7
+bind-key 4-8 group-only-8
+bind-key 4-9 group-only-9
+bind-key 4M-1 group-toggle-1
+bind-key 4M-2 group-toggle-2
+bind-key 4M-3 group-toggle-3
+bind-key 4M-4 group-toggle-4
+bind-key 4M-5 group-toggle-5
+bind-key 4M-6 group-toggle-6
+bind-key 4M-7 group-toggle-7
+bind-key 4M-8 group-toggle-8
+bind-key 4M-9 group-toggle-9
+bind-key C4-1 group-close-1
+bind-key C4-2 group-close-2
+bind-key C4-3 group-close-3
+bind-key C4-4 group-close-4
+bind-key C4-5 group-close-5
+bind-key C4-6 group-close-6
+bind-key C4-7 group-close-7
+bind-key C4-8 group-close-8
+bind-key C4-9 group-close-9
+bind-key 4S-1 window-movetogroup-1
+bind-key 4S-2 window-movetogroup-2
+bind-key 4S-3 window-movetogroup-3
+bind-key 4S-4 window-movetogroup-4
+bind-key 4S-5 window-movetogroup-5
+bind-key 4S-6 window-movetogroup-6
+bind-key 4S-7 window-movetogroup-7
+bind-key 4S-8 window-movetogroup-8
+bind-key 4S-9 window-movetogroup-9
+
+bind-mouse 4-1 window-move
+bind-mouse 4S-1 window-resize
