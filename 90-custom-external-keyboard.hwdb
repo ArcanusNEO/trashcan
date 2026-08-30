@@ -1,0 +1,5 @@
+evdev:input:b0003*
+  KEYBOARD_KEY_70039=leftctrl
+  KEYBOARD_KEY_70065=capslock
+  KEYBOARD_KEY_700e0=leftmeta
+  KEYBOARD_KEY_700e3=katakanahiragana

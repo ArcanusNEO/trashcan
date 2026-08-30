@@ -1,0 +1,3 @@
+evdev:name:ThinkPad Extra Buttons:dmi:bvn*:bvr*:bd*:svnLENOVO*:pn21XM0006CD:*
+  KEYBOARD_KEY_46=prog2
+  KEYBOARD_KEY_1402=phone
