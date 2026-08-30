@@ -24,7 +24,7 @@ bind-key 4-c "xcalc"
 
 bind-key XF86MonBrightnessDown "backlightctl -31"
 bind-key XF86MonBrightnessUp "backlightctl +31"
-bind-key 4-F7 "xrandr --output eDP-1 --primary --mode 2880x1800 --rate 120 --dpi 192"
+bind-key XF86Display "xrandr --output eDP-1 --primary --mode 2880x1800 --rate 120 --dpi 192"
 bind-key 4-F9 "touchpad.toggle"
 bind-key Print "xfce4-screenshooter -f"
 bind-key 4-Print "xfce4-screenshooter -w"
