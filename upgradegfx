@@ -1,0 +1,9 @@
+#!/bin/dash
+exec /usr/local/libexec/upgrade-current-packages \
+  "Graphics packages are up to date. Restart X or reboot if packages were upgraded." \
+  libffi \
+  wayland \
+  libxcvt \
+  mesa \
+  xorg-server \
+  xf86-input-libinput

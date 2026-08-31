@@ -1,0 +1,96 @@
+#!/bin/bash
+set -eo pipefail
+
+MIRROR="${MIRROR:-https://mirrors.tuna.tsinghua.edu.cn/slackware/slackware64-current}"
+
+wget() {
+  /usr/bin/wget -qc --show-progress -t 3 --waitretry=3 "$@"
+}
+
+package_path() {
+  local name="$1"
+
+  /usr/bin/awk -v name="$name" '
+    $1 == "PACKAGE" && $2 == "NAME:" && $3 ~ ("^" name "-[0-9]") {
+      package = $3
+      found = 1
+      next
+    }
+    found && $1 == "PACKAGE" && $2 == "LOCATION:" {
+      location = $3
+      sub(/^\.\//, "", location)
+      print location "/" package
+      exit
+    }
+  ' PACKAGES.TXT
+}
+
+verify_package() {
+  local path="$1"
+  local file="$2"
+  local expected actual
+
+  expected=$(/usr/bin/awk -v path="./$path" '$2 == path { print $1; exit }' CHECKSUMS.md5)
+  if [[ -z "$expected" ]]; then
+    echo "No checksum found for $path" >&2
+    return 1
+  fi
+
+  actual=$(/usr/bin/md5sum "$file")
+  actual="${actual%% *}"
+  if [[ "$actual" != "$expected" ]]; then
+    echo "Checksum verification failed for $file" >&2
+    return 1
+  fi
+}
+
+upgrade() {
+  local name="$1"
+  local path file installed
+
+  path=$(package_path "$name")
+  if [[ -z "$path" ]]; then
+    echo "Package not found in PACKAGES.TXT: $name" >&2
+    return 1
+  fi
+
+  file="${path##*/}"
+  installed="/var/log/packages/${file%.txz}"
+  if [[ -f "$installed" ]]; then
+    echo "$name is already current (${file%.txz})"
+    return
+  fi
+
+  echo "Upgrading $name to ${file%.txz}..."
+  wget "$MIRROR/$path"
+  verify_package "$path" "$file"
+  /sbin/upgradepkg --install-new "$file"
+  /bin/rm -f "$file"
+}
+
+if (( EUID != 0 )); then
+  echo "This script must be run as root." >&2
+  exit 1
+fi
+
+if (( $# < 2 )); then
+  echo "Usage: ${0##*/} COMPLETION_MESSAGE PACKAGE..." >&2
+  exit 2
+fi
+
+completion_message="$1"
+shift
+
+workdir=$(/usr/bin/mktemp -d /tmp/upgrade-current.XXXXXX)
+trap '/bin/rm -rf "$workdir"' EXIT
+cd "$workdir"
+
+echo "Refreshing Slackware-current package metadata..."
+wget "$MIRROR/PACKAGES.TXT"
+wget "$MIRROR/CHECKSUMS.md5"
+
+for package in "$@"; do
+  upgrade "$package"
+done
+
+echo "$completion_message"
