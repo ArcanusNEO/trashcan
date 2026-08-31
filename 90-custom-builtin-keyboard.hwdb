@@ -1,5 +1,5 @@
 evdev:input:b0011v0001p0001eAB83*
   KEYBOARD_KEY_3a=leftctrl
   KEYBOARD_KEY_1d=leftmeta
-  KEYBOARD_KEY_db=katakanahiragana
+  KEYBOARD_KEY_db=rightmeta
   KEYBOARD_KEY_6e=capslock
