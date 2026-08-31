@@ -1,6 +1,6 @@
 #if 0
-exe=/tmp/"$(head -c48 /dev/urandom | base64 | tr /+ _-)"
-cc -ggdb3 -O2 -fwrapv -fms-extensions -Wall -Wvla -Wno-parentheses -Wno-microsoft "$0" -o "$exe" && trap "exec rm -f -- $exe" HUP INT TERM && "$exe" "$@"
+exe="$(mktemp)"
+cc -ggdb3 -O2 -fwrapv -fms-extensions -Wall -Wvla -Wno-parentheses -Wno-microsoft "$0" -o "$exe" && trap "exec rm -f -- $exe" EXIT && "$exe" "$@"
 ret="$?"
 rm -f -- "$exe"
 exit "$ret"
