@@ -1,0 +1,25 @@
+#!/bin/sh
+
+profile=/sys/firmware/acpi/platform_profile
+read -r last_mode <"$profile"
+watcher=
+trap '[ -z "$watcher" ] || kill "$watcher" 2>/dev/null; exit 0' HUP INT TERM
+
+while :; do
+  inotifywait -q -e modify "$profile" >/dev/null &
+  watcher=$!
+  wait "$watcher" || exit
+  watcher=
+  read -r mode <"$profile"
+  [ "$mode" = "$last_mode" ] && continue
+  last_mode=$mode
+  case "$mode" in
+    low-power) label="Low Power" ;;
+    balanced) label="Balanced" ;;
+    performance) label="Performance" ;;
+    *) label="$mode" ;;
+  esac
+  notify-send -a "Platform Profile" \
+    -h string:x-canonical-private-synchronous:platform-profile \
+    "Power mode" "$label"
+done
