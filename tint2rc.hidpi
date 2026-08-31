@@ -95,7 +95,7 @@ autohide_hide_timeout = 0.5
 autohide_height = 2
 strut_policy = follow_size
 panel_window_name = SculcV0z5lqfutint2pkDxHTvWFKpE
-disable_transparency = 1
+disable_transparency = 0
 mouse_effects = 1
 font_shadow = 0
 mouse_hover_icon_asb = 100 0 10
@@ -219,4 +219,3 @@ tooltip_padding = 4 4
 tooltip_background_id = 5
 tooltip_font_color = #222222 100
 tooltip_font = Sans 16
-
