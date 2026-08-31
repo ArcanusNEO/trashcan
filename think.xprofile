@@ -1,0 +1,30 @@
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
+export GTK_THEME=Greybird-dark
+export QT_QPA_PLATFORMTHEME=kde
+export QT_STYLE_OVERRIDE=Oxygen
+export XCURSOR_THEME=Oxygen_Zion
+export XCURSOR_SIZE=48
+
+export MOZ_USE_XINPUT2=1
+
+export PROTON_USE_WOW64=1
+export PROTON_USE_NTSYNC=1
+export VKD3D_CONFIG=dxr11,dxr
+export VKD3D_DEBUG=none
+export VKD3D_SHADER_DEBUG=none
+export DXVK_LOG_LEVEL=none
+export CSMT=enabled
+export DXVK_ASYNC=1
+export DXVK_GPLASYNCCACHE=1
+export vblank_mode=0
+export __GL_SYNC_TO_VBLANK=0
+
+export GDK_SCALE=2
+# export QT_AUTO_SCREEN_SCALE_FACTOR=0
+# export QT_SCALE_FACTOR=2
