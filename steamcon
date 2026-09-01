@@ -1,0 +1,2 @@
+#!/bin/dash
+exec brun alacritty -e nice -n -10 ~/Applications/Steam-*-anylinux-x86_64.AppImage
