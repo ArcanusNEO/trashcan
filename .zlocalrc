@@ -1,5 +1,7 @@
 alias ifconfig='/sbin/ifconfig'
 alias ip='/sbin/ip -color=auto'
+alias poweroff=/sbin/poweroff
+alias reboot=/sbin/reboot
 PATH="$HOME/Applications${PATH:+:}$PATH"
 PATH="${PATH//:$HOME\/Applications/}"
 export PATH
