@@ -59,11 +59,13 @@ picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 alacritty --hold --daemon &
 (
-  thunderbird &
+  thunderbird --no-remote --new-instance &
+  sleep 1
   xdotool search --sync --onlyvisible --class thunderbird windowminimize
 ) &
 (
-  firefox --private-window &
+  firefox --no-remote --new-instance --private-window &
+  sleep 1
   xdotool search --sync --onlyvisible --class firefox windowunmap
 ) &
 
