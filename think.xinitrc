@@ -57,16 +57,16 @@ blueman-applet & \
 
 picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
-alacritty --hold --daemon &
+(
+  firefox --no-remote --new-instance --private-window &
+  sleep 2
+  xdotool search --sync --onlyvisible --class firefox windowunmap
+) &
 (
   thunderbird --no-remote --new-instance &
   sleep 1
   xdotool search --sync --onlyvisible --class thunderbird windowminimize
 ) &
-(
-  firefox --no-remote --new-instance --private-window &
-  sleep 1
-  xdotool search --sync --onlyvisible --class firefox windowunmap
-) &
+alacritty --hold --daemon &
 
 exec cwm
