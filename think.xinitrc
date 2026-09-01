@@ -42,7 +42,7 @@ sleep 0.1
 
 daemon -rB -P ~/.run -n platform-profile-notifyd ~/.local/bin/platform-profile-notifyd
 
-echo 310 >/sys/class/backlight/intel_backlight/brightness
+echo 248 >/sys/class/backlight/intel_backlight/brightness
 
 tint2 &
 /usr/lib64/xfce4/notifyd/xfce4-notifyd &
@@ -58,7 +58,13 @@ blueman-applet & \
 picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 alacritty --hold --daemon &
-thunderbird &
-firefox --private-window &
+(
+  thunderbird &
+  xdotool search --sync --onlyvisible --class thunderbird windowminimize
+) &
+(
+  firefox --private-window &
+  xdotool search --sync --onlyvisible --class firefox windowunmap
+) &
 
 exec cwm
