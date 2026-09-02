@@ -2,8 +2,11 @@
 exec /usr/local/libexec/upgrade-current-packages \
   "Graphics packages are up to date. Restart X or reboot if packages were upgraded." \
   libffi \
+  libdrm \
   wayland \
   libxcvt \
+  libxcb \
+  libdisplay-info \
   mesa \
   xorg-server \
   xf86-input-libinput
