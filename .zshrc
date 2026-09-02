@@ -12,7 +12,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-source "$ZSH/oh-my-zsh.sh"
+. "$ZSH/oh-my-zsh.sh"
 PROMPT='%(?.%{$fg[green]%}.%{$fg[red]%})%?%{$fg_bold[blue]%}|%{$fg[green]%}%C%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[cyan]%}'
 if [[ $(id -u) -eq 0 ]]; then
   PROMPT+='# %{$reset_color%}'
@@ -77,7 +77,7 @@ PKG_CONFIG_PATH="${PKG_CONFIG_PATH//:$HOME\/.local\/lib\/pkgconfig/}"
 export PKG_CONFIG_PATH
 
 if [[ -f "$HOME/.zlocalrc" ]]; then
-  source "$HOME/.zlocalrc"
+  . "$HOME/.zlocalrc"
 fi
 
 return 0
