@@ -1,0 +1,98 @@
+#!/bin/bash
+set -eo pipefail
+
+umask 077
+
+install_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+product_dir="${GROOVY_LANGUAGE_SERVER_PRODUCT_DIR:-$install_dir}"
+
+if [[ -n "${JAVA_HOME:-}" && -x "$JAVA_HOME/bin/java" ]]; then
+    java_executable="$JAVA_HOME/bin/java"
+else
+    java_executable="$(command -v java)"
+fi
+
+data_dir=""
+jvm_args=(-Xmx2G)
+launcher_args=()
+
+while (($#)); do
+    case "$1" in
+        -data)
+            if (($# < 2)); then
+                printf '%s\n' "Missing value for -data" >&2
+                exit 2
+            fi
+            data_dir="$2"
+            shift 2
+            ;;
+        --java-executable)
+            if (($# < 2)); then
+                printf '%s\n' "Missing value for --java-executable" >&2
+                exit 2
+            fi
+            java_executable="$2"
+            shift 2
+            ;;
+        --jvm-arg=*)
+            jvm_args+=("${1#--jvm-arg=}")
+            shift
+            ;;
+        *)
+            launcher_args+=("$1")
+            shift
+            ;;
+    esac
+done
+
+if [[ ! -x "$java_executable" ]]; then
+    printf 'Java executable is not executable: %s\n' "$java_executable" >&2
+    exit 1
+fi
+
+if [[ ! -d "$product_dir/plugins" || ! -f "$product_dir/config_linux/config.ini" ]]; then
+    printf 'Invalid Groovy Language Server product directory: %s\n' "$product_dir" >&2
+    exit 1
+fi
+
+if [[ -z "$data_dir" ]]; then
+    project_root="$(pwd -P)"
+    read -r project_hash _ < <(printf '%s' "$project_root" | sha256sum)
+    state_dir="/dev/shm/groovy-language-server-edt-$UID/$project_hash"
+    data_dir="$state_dir"
+else
+    data_dir="$(realpath -m -- "$data_dir")"
+    state_dir="$(dirname -- "$data_dir")"
+fi
+
+config_dir="$state_dir/._config"
+user_dir="$state_dir/._user"
+tmp_dir="$state_dir/._tmp"
+
+install -d "$data_dir" "$config_dir" "$user_dir" "$tmp_dir"
+cp -f "$product_dir/config_linux/config.ini" "$config_dir/config.ini"
+
+shopt -s nullglob
+launchers=("$product_dir"/plugins/org.eclipse.equinox.launcher_*.jar)
+if ((${#launchers[@]} != 1)); then
+    printf 'Expected one Equinox launcher under %s, found %d\n' \
+        "$product_dir/plugins" "${#launchers[@]}" >&2
+    exit 1
+fi
+
+exec "$java_executable" \
+    --add-modules=ALL-SYSTEM \
+    --add-opens java.base/java.util=ALL-UNNAMED \
+    --add-opens java.base/java.lang=ALL-UNNAMED \
+    "${jvm_args[@]}" \
+    -Djava.io.tmpdir="$tmp_dir" \
+    -Declipse.application=org.eclipse.groovy.ls.core.id1 \
+    -Declipse.product=org.eclipse.groovy.ls.core.product \
+    -Dosgi.bundles.defaultStartLevel=4 \
+    -Dosgi.checkConfiguration=true \
+    -Dfile.encoding=UTF-8 \
+    -jar "${launchers[0]}" \
+    -configuration "$config_dir" \
+    -user "$user_dir" \
+    -data "$data_dir" \
+    "${launcher_args[@]}"
