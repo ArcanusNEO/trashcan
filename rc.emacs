@@ -13,7 +13,7 @@ unset XDG_RUNTIME_DIR
 
 emacs_start() {
   if [ -x /usr/bin/emacs ]; then
-    echo "Starting emacs daemon:  /usr/bin/emacs --fg-daemon"
+    echo "Starting emacs daemon:  $USER_LOGIN_SHELL -c 'exec /usr/bin/emacs --fg-daemon'"
     /usr/bin/daemon -r -P ~/.run -n emacs -- "$USER_LOGIN_SHELL" -c 'exec /usr/bin/emacs --fg-daemon'
   fi
 }
