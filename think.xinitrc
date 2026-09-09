@@ -26,7 +26,12 @@ if [ -f "$userprofile" ]; then
   . "$userprofile"
 fi
 
-xrandr --output eDP-1 --primary --mode 2880x1800 --rate 120 --dpi 192
+if xrandr | grep 'HDMI-1 connected'; then
+  xrandr --output HDMI-1 --primary --mode 2560x1440 --rate 75 --dpi 192 --scale 1.5
+  xrandr --output eDP-1 --off
+else
+  xrandr --output eDP-1 --primary --mode 2880x1800 --rate 120 --dpi 192
+fi
 
 daemon -rB -P ~/.run -n pipewire /usr/bin/pipewire
 sleep 0.3
