@@ -11,16 +11,8 @@
         "baseURL": "https://cf.api.fan/v1"
       },
       "models": {
-        "deepseek-v4-flash": {
-          "name": "deepseek-v4-flash",
-          "limit": {
-            "context": 1000000,
-            "input": 768000,
-            "output": 32000
-          }
-        },
-        "deepseek-v4-pro": {
-          "name": "deepseek-v4-pro",
+        "deepseek-flash": {
+          "name": "deepseek-flash",
           "limit": {
             "context": 1000000,
             "input": 768000,
