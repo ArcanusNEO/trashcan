@@ -23,7 +23,7 @@ export CSMT=enabled
 export DXVK_ASYNC=1
 export DXVK_GPLASYNCCACHE=1
 
-# export GDK_SCALE=2
+export GDK_SCALE=2
 # export QT_AUTO_SCREEN_SCALE_FACTOR=0
 # export QT_SCALE_FACTOR=2
-# export WINIT_X11_SCALE_FACTOR=2
+export WINIT_X11_SCALE_FACTOR=2

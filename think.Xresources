@@ -1,7 +1,7 @@
 Xcursor.theme: Oxygen_Zion
 Xcursor.size: 48
 
-Xft.dpi: 192
+! Xft.dpi: 192
 Xft.autohint: 0
 Xft.lcdfilter: none
 Xft.hintstyle: hintslight
