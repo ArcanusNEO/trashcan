@@ -3,16 +3,14 @@ export ZSH=/usr/local/share/ohmyzsh
 export ZSH_THEME=simple
 export DISABLE_AUTO_UPDATE=true
 export DISABLE_MAGIC_FUNCTIONS=true
-export ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir -p $ZSH_CACHE_DIR
-fi
+export ZSH_CACHE_DIR="$HOME"/.cache/oh-my-zsh
+install -d "$ZSH_CACHE_DIR"
 plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
-. "$ZSH/oh-my-zsh.sh"
+. "$ZSH"/oh-my-zsh.sh
 PROMPT='%(?.%{$fg[green]%}.%{$fg[red]%})%?%{$fg_bold[blue]%}|%{$fg[green]%}%C%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[cyan]%}'
 if [[ $(id -u) -eq 0 ]]; then
   PROMPT+='# %{$reset_color%}'
