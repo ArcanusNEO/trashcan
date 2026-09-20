@@ -1,7 +1,6 @@
-filetype indent on
-filetype on
-filetype plugin on
+filetype plugin indent on
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+syntax on
 set autoindent
 set autoread
 set autowrite
@@ -43,7 +42,6 @@ set smartindent
 set smarttab
 set softtabstop=2
 set statusline=[%F][%{&encoding}][%{&fileformat}]%y%m%=[Unicode:0x%B(%b)][Line:%l/%L,Column:%c][%p%%]
-set syntax=on
 set tabstop=2
 set viminfo+=!
 set wildmenu
