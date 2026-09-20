@@ -74,7 +74,7 @@ PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig${PKG_CONFIG_PATH:+:}$PKG_CONFIG_PATH
 PKG_CONFIG_PATH="${PKG_CONFIG_PATH//:$HOME\/.local\/lib\/pkgconfig/}"
 export PKG_CONFIG_PATH
 
-if [[ -f "$HOME/.zlocalrc" ]]; then
+if [[ -r "$HOME/.zlocalrc" ]]; then
   . "$HOME/.zlocalrc"
 fi
 
