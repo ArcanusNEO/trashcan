@@ -1,5 +1,7 @@
-#!/bin/sh
-TOUCHPAD='Synaptics TM3266-010'
+#!/bin/bash
+set -euo pipefail
+
+TOUCHPAD='ELAN06BE:00 04F3:3327 Touchpad'
 if xinput list "$TOUCHPAD" | grep -q 'This device is disabled'; then
   xinput enable "$TOUCHPAD"
 else
