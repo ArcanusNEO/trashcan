@@ -358,8 +358,8 @@ write_stdout (app_t *app, const char *data, size_t length)
 static void
 on_tcp_write (uv_write_t *request, int status)
 {
-  tcp_write_request_t *write_request =
-    container_of (request, tcp_write_request_t, request);
+  tcp_write_request_t *write_request
+      = container_of (request, tcp_write_request_t, request);
   app_t *app = write_request->app;
 
   free (write_request->buffer.base);
@@ -414,8 +414,8 @@ send_tcp (app_t *app, const char *data, size_t length)
 static void
 on_udp_write (uv_udp_send_t *request, int status)
 {
-  udp_write_request_t *write_request =
-    container_of (request, udp_write_request_t, request);
+  udp_write_request_t *write_request
+      = container_of (request, udp_write_request_t, request);
   app_t *app = write_request->app;
 
   free (write_request->buffer.base);
@@ -519,8 +519,7 @@ send_udp (app_t *app, const char *data, size_t length)
 static void
 flush_pending_udp (app_t *app)
 {
-  while (!app->failed && app->udp_peer_known
-         && app->pending_datagrams != NULL)
+  while (!app->failed && app->udp_peer_known && app->pending_datagrams != NULL)
     {
       pending_datagram_t *datagram = app->pending_datagrams;
       app->pending_datagrams = datagram->next;
@@ -705,8 +704,7 @@ start_stdin (app_t *app)
 
   if (app->stdin_initialized)
     return 0;
-  if (fstat (STDIN_FILENO, &statbuf) == 0
-      && !isatty (STDIN_FILENO)
+  if (fstat (STDIN_FILENO, &statbuf) == 0 && !isatty (STDIN_FILENO)
       && (S_ISREG (statbuf.st_mode) || S_ISCHR (statbuf.st_mode)
           || S_ISBLK (statbuf.st_mode)))
     {
@@ -742,14 +740,14 @@ start_stdin (app_t *app)
 static int
 start_file_stdin (app_t *app)
 {
-  uv_buf_t buffer = uv_buf_init (app->stdin_file_buffer,
-                                 sizeof app->stdin_file_buffer);
+  uv_buf_t buffer
+      = uv_buf_init (app->stdin_file_buffer, sizeof app->stdin_file_buffer);
   int status;
 
   app->stdin_request.data = app;
   app->stdin_file_pending = 1;
-  status = uv_fs_read (app->loop, &app->stdin_request, STDIN_FILENO,
-                       &buffer, 1, -1, on_stdin_file_read);
+  status = uv_fs_read (app->loop, &app->stdin_request, STDIN_FILENO, &buffer,
+                       1, -1, on_stdin_file_read);
   if (status < 0)
     {
       app->stdin_file_pending = 0;
@@ -763,8 +761,8 @@ start_file_stdin (app_t *app)
 static int
 start_tcp_read (app_t *app)
 {
-  int status = uv_read_start ((uv_stream_t *)&app->tcp, alloc_buffer,
-                              on_tcp_read);
+  int status
+      = uv_read_start ((uv_stream_t *)&app->tcp, alloc_buffer, on_tcp_read);
   if (status < 0)
     {
       app_fail (app, "read TCP", status);
@@ -913,12 +911,11 @@ start_udp (app_t *app, const struct sockaddr_storage *address)
   app->udp_initialized = 1;
   app->udp_socket.data = app;
   if (app->listening)
-    status = uv_udp_bind (&app->udp_socket,
-                          (const struct sockaddr *)address,
+    status = uv_udp_bind (&app->udp_socket, (const struct sockaddr *)address,
                           UV_UDP_REUSEADDR);
   else
-    status = uv_udp_connect (&app->udp_socket,
-                             (const struct sockaddr *)address);
+    status
+        = uv_udp_connect (&app->udp_socket, (const struct sockaddr *)address);
   if (status < 0)
     {
       app_fail (app, app->listening ? "bind UDP listener" : "connect UDP",
