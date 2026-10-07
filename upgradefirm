@@ -1,0 +1,4 @@
+#!/bin/dash
+exec /usr/local/libexec/upgrade-current-packages \
+  "Kernel firmware is up to date. Reboot if firmware was upgraded." \
+  kernel-firmware

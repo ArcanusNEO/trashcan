@@ -1,7 +1,7 @@
 #!/bin/dash
+export MIRROR='http://download.zenwalk.org/x86_64/current'
 exec /usr/local/libexec/upgrade-current-packages \
   "Kernel packages are up to date. Reboot if packages were upgraded." \
-  kernel-generic \
+  kernel-zenwalk \
   kernel-headers \
-  kernel-source \
-  kernel-firmware
+  kernel-source
