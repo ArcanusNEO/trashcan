@@ -1,46 +1,42 @@
-#!/bin/dash
+#!/bin/sh
 # Service wrapper for Slackware rc.* scripts.
 
 # Colon-separated search path; keep a non-empty inherited RCPATH unchanged.
 RCPATH=${RCPATH:-"$HOME/.local/etc/rc.d:/usr/local/etc/rc.d:/etc/rc.d"}
 
 usage() {
-    printf 'Usage: %s <service> <action> [args...]\n' "${0##*/}"
-    printf '       %s --list\n' "${0##*/}"
+  printf 'Usage: %s <service> <action> [args...]\n' "${0##*/}"
+  printf '       %s --list\n' "${0##*/}"
+  printf 'Actions: enable, disable, or a command supported by the rc script\n'
 }
 
 list_services() {
-    remaining=$RCPATH
-    while [ -n "$remaining" ]; do
-        case "$remaining" in
-            *:*) dir=${remaining%%:*}; remaining=${remaining#*:} ;;
-            *)   dir=$remaining; remaining= ;;
-        esac
-        [ -n "$dir" ] && [ -d "$dir" ] || continue
-        for script in "$dir"/rc.*; do
-            [ -f "$script" ] || continue
-            case "${script##*/}" in
-                rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown)
-                    continue ;;
-            esac
-            if [ -x "$script" ]; then
-                state=executable
-            else
-                state=non-executable
-            fi
-            printf '%-15s %s\n' "$state" "$script"
-        done
+  remaining=$RCPATH
+  while [ -n "$remaining" ]; do
+    case "$remaining" in
+      *:*) dir=${remaining%%:*}; remaining=${remaining#*:} ;;
+      *)   dir=$remaining; remaining= ;;
+    esac
+    [ -n "$dir" ] && [ -d "$dir" ] || continue
+    for script in "$dir"/rc.*; do
+      [ -f "$script" ] || continue
+      case "${script##*/}" in
+        rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown)
+          continue ;;
+      esac
+      printf '%s\n' "$script"
     done
+  done
 }
 
 [ "$#" -gt 0 ] || { usage >&2; exit 2; }
 
 case "$1" in
-    -h|--help|help) usage; exit 0 ;;
-    -l|--list|list)
-        [ "$#" -eq 1 ] || { usage >&2; exit 2; }
-        list_services
-        exit 0 ;;
+  -h|--help|help) usage; exit 0 ;;
+  -l|--list|list)
+    [ "$#" -eq 1 ] || { usage >&2; exit 2; }
+    list_services
+    exit 0 ;;
 esac
 
 [ "$#" -ge 2 ] || { usage >&2; exit 2; }
@@ -48,38 +44,41 @@ esac
 name=$1
 shift
 case "$name" in
-    rc.*) name=${name#rc.} ;;
+  rc.*) name=${name#rc.} ;;
 esac
 
 # Only a simple service name is allowed (no paths or shell metacharacters).
 case "$name" in
-    ''|*[!a-zA-Z0-9_.+-]*)
-        printf 'Invalid service name: %s\n' "$name" >&2
-        exit 2 ;;
+  ''|*[!a-zA-Z0-9_.+-]*)
+    printf 'Invalid service name: %s\n' "$name" >&2
+    exit 2 ;;
 esac
 
 # Do not invoke system initialization scripts via this wrapper.
 case "$name" in
-    0|1|2|3|4|5|6|S|M|K|local|local_shutdown)
-        printf 'Refusing system init script: rc.%s\n' "$name" >&2
-        exit 2 ;;
+  0|1|2|3|4|5|6|S|M|K|local|local_shutdown)
+    printf 'Refusing system init script: rc.%s\n' "$name" >&2
+    exit 2 ;;
 esac
 
 # Match only rc.* files, in RCPATH order.
 remaining=$RCPATH
 while [ -n "$remaining" ]; do
-    case "$remaining" in
-        *:*) dir=${remaining%%:*}; remaining=${remaining#*:} ;;
-        *)   dir=$remaining; remaining= ;;
-    esac
-    [ -n "$dir" ] || continue
-    script=$dir/rc.$name
-    [ -f "$script" ] || continue
-    if [ ! -x "$script" ]; then
-        printf 'Not executable: %s\n' "$script" >&2
-        exit 126
-    fi
-    exec "$script" "$@"
+  case "$remaining" in
+    *:*) dir=${remaining%%:*}; remaining=${remaining#*:} ;;
+    *)   dir=$remaining; remaining= ;;
+  esac
+  [ -n "$dir" ] || continue
+  script=$dir/rc.$name
+  [ -f "$script" ] || continue
+
+  case "$1" in
+    enable)  chmod +x "$script"; exit $? ;;
+    disable) chmod -x "$script"; exit $? ;;
+  esac
+
+  # Execute even if the file lacks execute permission.
+  exec /bin/sh "$script" "$@"
 done
 
 printf 'Service not found: rc.%s\n' "$name" >&2
