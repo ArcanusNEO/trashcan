@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/dash
 # Service wrapper for Slackware rc.* scripts.
 
 # Colon-separated search path; keep a non-empty inherited RCPATH unchanged.
