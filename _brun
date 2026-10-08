@@ -1,0 +1,5 @@
+#compdef brun
+# brun has no options of its own: complete the wrapped command normally.
+shift words
+(( CURRENT-- ))
+_normal
