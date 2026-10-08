@@ -1,8 +1,44 @@
 # Bash completion for the Slackware service wrapper.
 # Install as /usr/share/bash-completion/completions/service
 
+# Extract actions from case "$1" labels.
+# This only READS rc scripts; it never executes them.
+_slackware_service_actions() {
+  awk '
+    function add(raw, name) {
+      name = raw
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", name)
+      gsub(/^["\047]|["\047]$/, "", name)
+      if (name !~ /^[[:alpha:]_][[:alnum:]_.-]*$/) return
+      if (!case_seen[name]++) cases[++case_count] = name
+    }
+    {
+      line = $0
+      if (depth == 0) {
+        if (line ~ /^[[:space:]]*case[[:space:]]+["\047]?\$1["\047]?[[:space:]]+in([[:space:]]|$)/ ||
+            line ~ /^[[:space:]]*case[[:space:]]+["\047]?\$\{1\}["\047]?[[:space:]]+in([[:space:]]|$)/) {
+          depth = 1
+        }
+        next
+      }
+      if (line ~ /^[[:space:]]*case[[:space:]]+/) { depth++; next }
+      if (line ~ /^[[:space:]]*esac([[:space:];]|$)/) { depth--; next }
+      if (depth != 1) next
+      sub(/^[[:space:]]*\([[:space:]]*/, "", line)
+      sub(/^[[:space:]]*/, "", line)
+      if (line !~ /^[^#;]+\)/) next
+      sub(/\).*/, "", line)
+      n = split(line, items, /\|/)
+      for (i = 1; i <= n; i++) add(items[i])
+    }
+    END {
+      for (i = 1; i <= case_count; i++) print cases[i]
+    }
+  ' "$1"
+}
+
 _slackware_service_complete() {
-  local cur rcpath dir script name
+  local cur rcpath dir script name action
   local -a dirs choices
   local -A seen=()
 
@@ -10,26 +46,21 @@ _slackware_service_complete() {
 
   case $COMP_CWORD in
     1)
-      # These are the only standalone wrapper options.
       choices=(--list --help -l -h list help)
       if [[ $cur != -* ]]; then
         rcpath=${RCPATH:-"$HOME/.local/etc/rc.d:/usr/local/etc/rc.d:/etc/rc.d"}
         IFS=: read -r -a dirs <<< "$rcpath"
-
         for dir in "${dirs[@]}"; do
           [[ -n $dir && -d $dir ]] || continue
           for script in "$dir"/rc.*; do
             [[ -f $script ]] || continue
             case ${script##*/} in
-              rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown)
-                continue ;;
+              rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown) continue ;;
             esac
-
             name=${script##*/rc.}
             [[ $name =~ ^[a-zA-Z0-9_.+-]+$ ]] || continue
             [[ ${seen[$name]+exists} ]] && continue
             seen[$name]=1
-
             if [[ $cur == rc.* ]]; then
               choices+=("rc.$name")
             else
@@ -40,13 +71,30 @@ _slackware_service_complete() {
       fi
       ;;
     2)
-      case ${COMP_WORDS[1]} in
+      name=${COMP_WORDS[1]}
+      case $name in
         --list|-l|list|--help|-h|help) return ;;
+        rc.*) name=${name#rc.} ;;
       esac
-      choices=(start stop restart reload force-reload status enable disable)
+      [[ $name =~ ^[a-zA-Z0-9_.+-]+$ ]] || return
+      case $name in
+        0|1|2|3|4|5|6|S|M|K|local|local_shutdown) return ;;
+      esac
+
+      rcpath=${RCPATH:-"$HOME/.local/etc/rc.d:/usr/local/etc/rc.d:/etc/rc.d"}
+      IFS=: read -r -a dirs <<< "$rcpath"
+      for dir in "${dirs[@]}"; do
+        [[ -n $dir ]] || continue
+        script=$dir/rc.$name
+        [[ -f $script ]] || continue
+        choices=(enable disable)
+        while IFS= read -r action; do
+          [[ " ${choices[*]} " == *" $action "* ]] || choices+=("$action")
+        done < <(_slackware_service_actions "$script")
+        break
+      done
       ;;
     *)
-      # Additional arguments belong to the rc script, not the wrapper.
       compopt -o default
       return ;;
   esac

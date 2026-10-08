@@ -2,9 +2,44 @@
 # Zsh completion for the Slackware service wrapper.
 # Install in a directory in $fpath, e.g. ~/.zfunc/_service
 
+# Extract actions from case "$1" labels without executing the rc script.
+_service_parse_actions() {
+  awk '
+    function add(raw, name) {
+      name = raw
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", name)
+      gsub(/^["\047]|["\047]$/, "", name)
+      if (name !~ /^[[:alpha:]_][[:alnum:]_.-]*$/) return
+      if (!case_seen[name]++) cases[++case_count] = name
+    }
+    {
+      line = $0
+      if (depth == 0) {
+        if (line ~ /^[[:space:]]*case[[:space:]]+["\047]?\$1["\047]?[[:space:]]+in([[:space:]]|$)/ ||
+            line ~ /^[[:space:]]*case[[:space:]]+["\047]?\$\{1\}["\047]?[[:space:]]+in([[:space:]]|$)/) {
+          depth = 1
+        }
+        next
+      }
+      if (line ~ /^[[:space:]]*case[[:space:]]+/) { depth++; next }
+      if (line ~ /^[[:space:]]*esac([[:space:];]|$)/) { depth--; next }
+      if (depth != 1) next
+      sub(/^[[:space:]]*\([[:space:]]*/, "", line)
+      sub(/^[[:space:]]*/, "", line)
+      if (line !~ /^[^#;]+\)/) next
+      sub(/\).*/, "", line)
+      n = split(line, items, /\|/)
+      for (i = 1; i <= n; i++) add(items[i])
+    }
+    END {
+      for (i = 1; i <= case_count; i++) print cases[i]
+    }
+  ' "$1"
+}
+
 _service() {
-  local state rcpath dir script name
-  local -a dirs services
+  local state rcpath dir script name action
+  local -a dirs services actions
   local -A seen
 
   _arguments -C \
@@ -19,16 +54,13 @@ _service() {
       if [[ $PREFIX != -* ]]; then
         rcpath=${RCPATH:-"$HOME/.local/etc/rc.d:/usr/local/etc/rc.d:/etc/rc.d"}
         dirs=( ${(s/:/)rcpath} )
-
         for dir in "${dirs[@]}"; do
           [[ -n $dir && -d $dir ]] || continue
           for script in "$dir"/rc.*(N); do
             [[ -f $script ]] || continue
             case ${script:t} in
-              rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown)
-                continue ;;
+              rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown) continue ;;
             esac
-
             name=${script:t}
             name=${name#rc.}
             case $name in
@@ -36,7 +68,6 @@ _service() {
             esac
             [[ -n ${seen[$name]-} ]] && continue
             seen[$name]=1
-
             if [[ $PREFIX == rc.* ]]; then
               services+=("rc.$name")
             else
@@ -49,11 +80,27 @@ _service() {
       fi
       ;;
     action)
-      case ${words[2]} in
+      name=${words[2]}
+      case $name in
         --list|-l|list|--help|-h|help) return ;;
+        rc.*) name=${name#rc.} ;;
       esac
-      local -a actions=(start stop restart reload force-reload status enable disable)
-      _describe -t actions 'action' actions
+      case $name in
+        ''|*[!a-zA-Z0-9_.+-]*|0|1|2|3|4|5|6|S|M|K|local|local_shutdown) return ;;
+      esac
+      rcpath=${RCPATH:-"$HOME/.local/etc/rc.d:/usr/local/etc/rc.d:/etc/rc.d"}
+      dirs=( ${(s/:/)rcpath} )
+      for dir in "${dirs[@]}"; do
+        [[ -n $dir ]] || continue
+        script="$dir/rc.$name"
+        [[ -f $script ]] || continue
+        actions=(enable disable)
+        while IFS= read -r action; do
+          (( ${actions[(I)$action]} )) || actions+=("$action")
+        done < <(_service_parse_actions "$script")
+        _describe -t actions 'action' actions
+        return
+      done
       ;;
   esac
 }
