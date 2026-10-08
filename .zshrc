@@ -10,6 +10,8 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+install -d "$HOME"/.zfunc
+fpath=("$HOME"/.zfunc $fpath)
 . "$ZSH"/oh-my-zsh.sh
 PROMPT='%(?.%{$fg[green]%}.%{$fg[red]%})%?%{$fg_bold[blue]%}|%{$fg[green]%}%C%{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[cyan]%}'
 if [[ $(id -u) -eq 0 ]]; then
