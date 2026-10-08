@@ -1,0 +1,61 @@
+#compdef service
+# Zsh completion for the Slackware service wrapper.
+# Install in a directory in $fpath, e.g. ~/.zfunc/_service
+
+_service() {
+  local state rcpath dir script name
+  local -a dirs services
+  local -A seen
+
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[show usage]' \
+    '(-l --list)'{-l,--list}'[list available services]' \
+    '1:service:->service' \
+    '2:action:->action' \
+    '*:rc script arguments:_files' && return
+
+  case $state in
+    service)
+      if [[ $PREFIX != -* ]]; then
+        rcpath=${RCPATH:-"$HOME/.local/etc/rc.d:/usr/local/etc/rc.d:/etc/rc.d"}
+        dirs=( ${(s/:/)rcpath} )
+
+        for dir in "${dirs[@]}"; do
+          [[ -n $dir && -d $dir ]] || continue
+          for script in "$dir"/rc.*(N); do
+            [[ -f $script ]] || continue
+            case ${script:t} in
+              rc.[0-9]|rc.S|rc.M|rc.K|rc.local|rc.local_shutdown)
+                continue ;;
+            esac
+
+            name=${script:t}
+            name=${name#rc.}
+            case $name in
+              ''|*[!a-zA-Z0-9_.+-]*) continue ;;
+            esac
+            [[ -n ${seen[$name]-} ]] && continue
+            seen[$name]=1
+
+            if [[ $PREFIX == rc.* ]]; then
+              services+=("rc.$name")
+            else
+              services+=("$name")
+            fi
+          done
+        done
+        services+=(list help)
+        _describe -t services 'service' services
+      fi
+      ;;
+    action)
+      case ${words[2]} in
+        --list|-l|list|--help|-h|help) return ;;
+      esac
+      local -a actions=(start stop restart reload force-reload status enable disable)
+      _describe -t actions 'action' actions
+      ;;
+  esac
+}
+
+_service "$@"
