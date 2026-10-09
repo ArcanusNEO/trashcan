@@ -85,7 +85,7 @@ workdir=$(/usr/bin/mktemp -d /tmp/upgrade-current.XXXXXX)
 trap '/bin/rm -rf "$workdir"' EXIT
 cd "$workdir"
 
-echo "Refreshing Slackware-current package metadata..."
+echo "Refreshing Slackware package metadata..."
 wget "$MIRROR/PACKAGES.TXT"
 wget "$MIRROR/CHECKSUMS.md5"
 
