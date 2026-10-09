@@ -1,5 +1,5 @@
 #!/bin/dash
-exec /usr/local/libexec/upgrade-current-packages \
+exec /usr/local/libexec/upgrade-custom-packages \
   "Graphics packages are up to date. Restart X or reboot if packages were upgraded." \
   libffi \
   libdrm \
