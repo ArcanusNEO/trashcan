@@ -15,18 +15,28 @@
           "name": "deepseek-flash",
           "limit": {
             "context": 1000000,
-            "input": 768000,
+            "input": 960000,
             "output": 32000
           }
         },
         "claude-opus-5-5": {
           "name": "claude-opus-5-5",
           "limit": {
-            "context": 192000,
-            "input": 168000,
-            "output": 8000
+            "context": 1000000,
+            "input": 960000,
+            "output": 32000
           }
         }
+      }
+    }
+  },
+  "mcp": {
+    "database-manager": {
+      "type": "remote",
+      "url": "https://sre-db-manager.internal.unity.cn/api/mcp",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer mcp_"
       }
     }
   }
