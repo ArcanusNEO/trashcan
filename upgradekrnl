@@ -2,7 +2,6 @@
 # export MIRROR='http://download.zenwalk.org/x86_64/current'
 exec /usr/local/libexec/upgrade-custom-packages \
   "Kernel packages are up to date. Reboot if packages were upgraded." \
-  # kernel-zenwalk \
   kernel-generic \
   kernel-headers \
   kernel-source
