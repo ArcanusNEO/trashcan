@@ -72,6 +72,6 @@ picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
   sleep 1
   xdotool search --sync --onlyvisible --class thunderbird windowminimize
 ) &
-alacritty --hold --daemon &
+alacritty --daemon &
 
 exec cwm
