@@ -13,8 +13,8 @@ wireguard_stop() {
 }
 
 wireguard_restart() {
-  wireguard_stop
-  wireguard_start
+  wireguard_stop "$*"
+  wireguard_start "$*"
 }
 
 case "$1" in
