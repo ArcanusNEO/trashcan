@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin
+
 wireguard_start() {
   if [ -e /etc/wireguard/"$*".conf ]; then
     echo "Starting wireguard:  /usr/bin/wg-quick up $* &"
