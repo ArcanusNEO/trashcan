@@ -13,17 +13,17 @@ OPENCODE="$(command -v opencode)"
 opencode_start() {
   if [ -x "$OPENCODE" ]; then
     echo "Starting OpenCode server daemon..."
-    /usr/bin/daemon -ir -P ~/.run -n opencode -- "$OPENCODE" serve --hostname 10.48.59.6 >/dev/null 2>&1
+    /usr/bin/daemon -r -P ~/.run -n opencode -- "$OPENCODE" serve --hostname 10.48.59.6 >/dev/null 2>&1
   fi
 }
 
 opencode_stop() {
   echo "Stopping OpenCode server..."
-  /usr/bin/daemon -ir -P ~/.run -n opencode --stop
+  /usr/bin/daemon -r -P ~/.run -n opencode --stop
 }
 
 opencode_restart() {
-  /usr/bin/daemon -ir -P ~/.run -n opencode --restart
+  /usr/bin/daemon -r -P ~/.run -n opencode --restart
 }
 
 case "$1" in
