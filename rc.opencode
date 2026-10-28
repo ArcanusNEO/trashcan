@@ -1,7 +1,6 @@
 #!/bin/sh
 
 . /etc/profile
-export COLORTERM=truecolor
 export USER="$(whoami)"
 USER_LOGIN_SHELL="$(getent passwd $USER | cut -d: -f7)"
 USER_LOGIN_SHELL_NAME="$(basename $USER_LOGIN_SHELL)"
@@ -13,19 +12,18 @@ OPENCODE="$(command -v opencode)"
 
 opencode_start() {
   if [ -x "$OPENCODE" ]; then
-    echo "Starting opencode server:  opencode serve --hostname 10.48.59.6 &"
-    opencode serve --hostname 10.48.59.6 >/dev/null 2>&1 &
+    echo "Starting OpenCode server daemon..."
+    /usr/bin/daemon -ir -P ~/.run -n opencode -- "$OPENCODE" serve --hostname 10.48.59.6 >/dev/null 2>&1
   fi
 }
 
 opencode_stop() {
-  echo "Stopping opencode server..."
-  killall opencode
+  echo "Stopping OpenCode server..."
+  /usr/bin/daemon -ir -P ~/.run -n opencode --stop
 }
 
 opencode_restart() {
-  opencode_stop
-  opencode_start
+  /usr/bin/daemon -ir -P ~/.run -n opencode --restart
 }
 
 case "$1" in
