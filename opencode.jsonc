@@ -49,7 +49,7 @@
   },
   "mcp": {
     "servers": {
-      "database-manager": {
+      "cn.unity.sre-db-manager": {
         "type": "remote",
         "url": "https://sre-db-manager.internal.unity.cn/api/mcp",
         "oauth": false,
