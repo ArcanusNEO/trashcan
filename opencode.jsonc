@@ -1,13 +1,18 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "shell": "bash",
-  "permission": "allow",
-  "disabled_providers": [],
-  "provider": {
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "allow"
+    }
+  ],
+  "providers": {
     "packyapi": {
       "name": "packyapi",
-      "npm": "@ai-sdk/anthropic",
-      "options": {
+      "package": "@opencode/ai/providers/anthropic",
+      "settings": {
         "baseURL": "https://slb-v1.api.fan/v1"
       },
       "models": {
@@ -31,12 +36,14 @@
     }
   },
   "mcp": {
-    "database-manager": {
-      "type": "remote",
-      "url": "https://sre-db-manager.internal.unity.cn/api/mcp",
-      "enabled": true,
-      "headers": {
-        "Authorization": "Bearer mcp_"
+    "servers": {
+      "database-manager": {
+        "type": "remote",
+        "url": "https://sre-db-manager.internal.unity.cn/api/mcp",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer mcp_"
+        }
       }
     }
   }
