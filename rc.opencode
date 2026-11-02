@@ -12,8 +12,13 @@ OPENCODE="$(command -v opencode)"
 
 opencode_start() {
   if [ -x "$OPENCODE" ]; then
+    WGIP="$(/sbin/ip -4 -o addr show dev wg0 2>/dev/null | /usr/bin/awk '{split($4, addr, "/"); print addr[1]; exit}')"
+    if [ -z "$WGIP" ]; then
+      echo "WireGuard interface not configured, aborting OpenCode server daemon startup." >&2
+      return 1
+    fi
     echo "Starting OpenCode server daemon..."
-    /usr/bin/daemon -r -P ~/.run -n opencode -- "$OPENCODE" serve --hostname 10.48.59.6 >/dev/null 2>&1
+    /usr/bin/daemon -r -P ~/.run -n opencode -- "$OPENCODE" serve --hostname "$WGIP" >/dev/null 2>&1
   fi
 }
 
