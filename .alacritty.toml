@@ -26,7 +26,7 @@ blink_timeout = 0
 blinking = "Never"
 
 [terminal]
-osc52 = "Disabled"
+osc52 = "OnlyCopy"
 
 [mouse]
 hide_when_typing = true
