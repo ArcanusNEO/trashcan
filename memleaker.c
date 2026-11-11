@@ -8,7 +8,7 @@ static_assert (0, "unreachable");
 #include "cmacs.h"
 
 int
-main ()
+main (int argc, char *argv[])
 {
 #define MPAGE 4096
   void *p;
