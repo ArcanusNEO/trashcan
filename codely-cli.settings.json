@@ -1,0 +1,12 @@
+{
+  "selectedAuthType": "codely-oauth",
+  "model": "codely-glm-5.3",
+  "mcpServers": {
+    "cn.unity.sre-db-manager": {
+      "httpUrl": "https://sre-db-manager.internal.unity.cn/api/mcp",
+      "headers": {
+        "X-MCP-Token": "mcp_"
+      }
+    }
+  }
+}
