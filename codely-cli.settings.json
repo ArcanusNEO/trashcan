@@ -1,5 +1,9 @@
 {
   "selectedAuthType": "codely-oauth",
+  "contextFileName": [
+    "CODELY.md",
+    "AGENTS.md"
+  ],
   "model": "codely-glm-5.3",
   "mcpServers": {
     "cn.unity.sre-db-manager": {
