@@ -3,6 +3,7 @@ fontname "sans-serif:pixelsize=14:bold"
 gap 30 0 0 0
 ignore SculcV0z5lqfutint2pkDxHTvWFKpE
 sticky yes
+snapdist 10
 
 autogroup 0 "Mail", "thunderbird-default"
 autogroup 0 "audacious", "Audacious"
