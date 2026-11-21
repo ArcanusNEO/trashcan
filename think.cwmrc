@@ -1,8 +1,9 @@
 fontname "PingFang SC:pixelsize=24:bold"
 
 gap 48 0 0 0
-ignore SculcV0z5lqfutint2pkDxHTvWFKpE
+ignore __tint2__
 sticky yes
+snapdist 10
 
 autogroup 0 "Mail", "thunderbird-default"
 autogroup 0 "audacious", "Audacious"
@@ -55,6 +56,7 @@ bind-key 4-space menu-window
 bind-key 4-x window-close
 bind-key 4-o window-maximize
 bind-key 4-f window-fullscreen
+bind-key 4-a window-above
 bind-key 4-d group-toggle-all
 bind-key 4-g window-group
 bind-key 4-backslash window-hide
