@@ -1,7 +1,7 @@
-fontname "sans-serif:pixelsize=14:bold"
+fontname "PingFang SC:pixelsize=14:bold"
 
 gap 30 0 0 0
-ignore SculcV0z5lqfutint2pkDxHTvWFKpE
+ignore __tint2__
 sticky yes
 snapdist 10
 
@@ -56,6 +56,11 @@ bind-key 4-space menu-window
 bind-key 4-x window-close
 bind-key 4-o window-maximize
 bind-key 4-f window-fullscreen
+bind-key 4-a window-above
+bind-key 4-minus window-lower
+bind-key 4-underscore window-lower
+bind-key 4-plus window-raise
+bind-key 4-equal window-raise
 bind-key 4-d group-toggle-all
 bind-key 4-g window-group
 bind-key 4-backslash window-hide
