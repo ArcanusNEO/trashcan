@@ -49,10 +49,10 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
   eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
 
+daemon -rB -P ~/.run -n xfce4-notifyd /usr/lib64/xfce4/notifyd/xfce4-notifyd
 daemon -rB -P ~/.run -n platform-profile-notifyd ~/.local/bin/platform-profile-notifyd
 
 tint2 &
-/usr/lib64/xfce4/notifyd/xfce4-notifyd &
 
 (
   timeout 10 xdotool search --sync --class tint2
@@ -69,7 +69,7 @@ tint2 &
 picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 (
-  firefox --new-instance about:blank &
+  firefox --new-instance --private-window about:blank &
   timeout 10 xdotool search --sync --onlyvisible --name 'Mozilla Firefox .' windowunmap %@
 ) &
 (
