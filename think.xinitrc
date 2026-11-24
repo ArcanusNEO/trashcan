@@ -36,6 +36,8 @@ if [ -f "$userprofile" ]; then
   . "$userprofile"
 fi
 
+echo 248 >/sys/class/backlight/intel_backlight/brightness
+
 if xrandr | grep 'HDMI-1 connected'; then
   xrandr --output HDMI-1 --primary --mode 2560x1440 --rate 75 --dpi 192 --scale 1.5
   xrandr --output eDP-1 --off
@@ -53,8 +55,6 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
 fi
 
 daemon -rB -P ~/.run -n platform-profile-notifyd ~/.local/bin/platform-profile-notifyd
-
-echo 248 >/sys/class/backlight/intel_backlight/brightness
 
 tint2 &
 /usr/lib64/xfce4/notifyd/xfce4-notifyd &
@@ -75,7 +75,7 @@ picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 (
   firefox --no-remote --new-instance --private-window &
-  timeout 10 xdotool search --sync --onlyvisible --class firefox windowunmap %@
+  timeout 10 xdotool search --sync --onlyvisible --name 'Mozilla Firefox .' windowunmap %@
 ) &
 (
   thunderbird --no-remote --new-instance &
