@@ -69,7 +69,7 @@ tint2 &
 picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 (
-  firefox --no-remote --new-instance --private-window &
+  firefox --new-instance about:blank &
   timeout 10 xdotool search --sync --onlyvisible --name 'Mozilla Firefox .' windowunmap %@
 ) &
 (
