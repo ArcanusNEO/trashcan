@@ -1,5 +1,15 @@
 #!/bin/bash
 
+waitfor() {
+  local i
+  for ((i = 0; i < 200; ++i)); do
+    "$@" >/dev/null 2>&1 && return 0
+    sleep 0.05
+  done
+  echo "waitfor timeout: $*" >&2
+  return 1
+}
+
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 userresources="$HOME"/.Xresources
@@ -34,16 +44,13 @@ else
 fi
 
 daemon -rB -P ~/.run -n pipewire /usr/bin/pipewire
-sleep 0.3
+waitfor pw-cli info 0
 daemon -rB -P ~/.run -n wireplumber /usr/bin/wireplumber
-sleep 0.3
 daemon -rB -P ~/.run -n pipewire-pulse /usr/bin/pipewire-pulse
-sleep 0.1
 
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
   eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
-sleep 0.1
 
 daemon -rB -P ~/.run -n platform-profile-notifyd ~/.local/bin/platform-profile-notifyd
 
@@ -52,23 +59,27 @@ echo 248 >/sys/class/backlight/intel_backlight/brightness
 tint2 &
 /usr/lib64/xfce4/notifyd/xfce4-notifyd &
 
-sleep 1 && dash -c ' \
-volctl & \
-fcitx5 -dr & \
-xfce4-clipman & \
-nm-applet & \
-blueman-applet & \
-' &
+(
+  timeout 10 xdotool search --sync --class tint2
+  (
+    waitfor pactl info
+    volctl &
+  ) &
+  fcitx5 -dr &
+  xfce4-clipman &
+  nm-applet &
+  blueman-applet &
+) &
 
 picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 (
   firefox --no-remote --new-instance --private-window &
-  timeout 90 xdotool search --sync --onlyvisible --class firefox windowunmap %@
+  timeout 10 xdotool search --sync --onlyvisible --class firefox windowunmap %@
 ) &
 (
   thunderbird --no-remote --new-instance &
-  timeout 90 xdotool search --sync --onlyvisible --class thunderbird windowminimize %@
+  timeout 10 xdotool search --sync --onlyvisible --class thunderbird windowminimize %@
 ) &
 alacritty --daemon &
 
