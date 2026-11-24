@@ -13,8 +13,8 @@ export XCURSOR_SIZE=48
 
 export MOZ_USE_XINPUT2=1
 
-export PROTON_USE_WOW64=1
-export PROTON_USE_NTSYNC=1
+# export PROTON_USE_WOW64=1
+# export PROTON_USE_NTSYNC=1
 export VKD3D_CONFIG=dxr11,dxr
 export VKD3D_DEBUG=none
 export VKD3D_SHADER_DEBUG=none
