@@ -1,56 +1,69 @@
-#!/bin/sh
+#!/bin/bash
+
+waitfor() {
+  local i
+  for ((i = 0; i < 200; ++i)); do
+    "$@" >/dev/null 2>&1 && return 0
+    sleep 0.05
+  done
+  echo "waitfor timeout: $*" >&2
+  return 1
+}
 
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-userresources="$HOME"/.Xresources
-usermodmap="$HOME"/.Xmodmap
-userprofile="$HOME"/.xprofile
-
+userresources=~/.Xresources
+usermodmap=~/.Xmodmap
+userprofile=~/.xprofile
 if [ -f "$sysresources" ]; then
   /usr/bin/xrdb -merge "$sysresources"
 fi
-
 if [ -f "$sysmodmap" ]; then
   /usr/bin/xmodmap "$sysmodmap"
 fi
-
 if [ -f "$userresources" ]; then
   /usr/bin/xrdb -merge "$userresources"
 fi
-
 if [ -f "$usermodmap" ]; then
   /usr/bin/xmodmap "$usermodmap"
 fi
-
 if [ -f "$userprofile" ]; then
   . "$userprofile"
 fi
 
-daemon -rB -P ~/.run -n pipewire /usr/bin/pipewire
-sleep 0.3
-daemon -rB -P ~/.run -n wireplumber /usr/bin/wireplumber
-sleep 0.3
-daemon -rB -P ~/.run -n pipewire-pulse /usr/bin/pipewire-pulse
-sleep 0.1
-
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
   eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
-sleep 0.1
 
-# echo 62015 >/sys/class/backlight/intel_backlight/brightness
+daemon -rB -P ~/.run -n pipewire /usr/bin/pipewire
+waitfor pw-cli info 0
+daemon -rB -P ~/.run -n wireplumber /usr/bin/wireplumber
+daemon -rB -P ~/.run -n pipewire-pulse /usr/bin/pipewire-pulse
 
-tint2 &
 /usr/lib64/xfce4/notifyd/xfce4-notifyd &
-volumeicon &
-fcitx5 -dr &
-xfce4-clipman &
-# nm-applet &
+tint2 &
+(
+  timeout 10 xdotool search --sync --class tint2
+  (
+    waitfor pactl info
+    volctl &
+  ) &
+  fcitx5 -dr &
+  xfce4-clipman &
+  nm-applet &
+  # blueman-applet &
+) &
 
-picom --backend=xrender --vsync --no-fading-openclose --unredir-if-possible --blur-method=none --use-damage &
+picom --backend=xrender --vsync --unredir-if-possible --use-damage &
 
-alacritty --hold --daemon &
-thunderbird &
-firefox --private-window &
+(
+  firefox --new-instance --private-window about:blank &
+  timeout 10 xdotool search --sync --onlyvisible --name 'Mozilla Firefox .' windowunmap %@
+) &
+(
+  thunderbird --no-remote --new-instance &
+  timeout 10 xdotool search --sync --onlyvisible --class thunderbird windowminimize %@
+) &
+alacritty --daemon &
 
 exec cwm
