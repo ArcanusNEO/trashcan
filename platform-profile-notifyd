@@ -3,7 +3,7 @@
 profile=/sys/firmware/acpi/platform_profile
 read -r last_mode <"$profile"
 watcher=
-trap '[ -z "$watcher" ] || kill "$watcher" 2>/dev/null; exit 0' HUP INT TERM
+trap '[ -z "$watcher" ] || kill "$watcher" 2>/dev/null' EXIT
 
 while :; do
   inotifywait -q -e modify "$profile" >/dev/null &
@@ -19,7 +19,5 @@ while :; do
     performance) label="Performance" ;;
     *) label="$mode" ;;
   esac
-  notify-send -a "Platform Profile" \
-    -h string:x-canonical-private-synchronous:platform-profile \
-    "Power mode" "$label"
+  notify-send -a "Platform Profile" "Power mode" "$label"
 done
