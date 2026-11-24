@@ -11,7 +11,7 @@ while :; do
   wait "$watcher" || exit
   watcher=
   read -r mode <"$profile"
-  [ "$mode" = "$last_mode" ] && continue
+  [ "$mode"x = "$last_mode"x ] && continue
   last_mode=$mode
   case "$mode" in
     low-power) label="Low Power" ;;
