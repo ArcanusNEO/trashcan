@@ -64,13 +64,11 @@ picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
 
 (
   firefox --no-remote --new-instance --private-window &
-  sleep 2
-  xdotool search --sync --onlyvisible --class firefox windowunmap
+  timeout 90 xdotool search --sync --onlyvisible --class firefox windowunmap %@
 ) &
 (
   thunderbird --no-remote --new-instance &
-  sleep 1
-  xdotool search --sync --onlyvisible --class thunderbird windowminimize
+  timeout 90 xdotool search --sync --onlyvisible --class thunderbird windowminimize %@
 ) &
 alacritty --daemon &
 
