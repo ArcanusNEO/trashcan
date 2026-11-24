@@ -12,9 +12,9 @@ waitfor() {
 
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-userresources="$HOME"/.Xresources
-usermodmap="$HOME"/.Xmodmap
-userprofile="$HOME"/.xprofile
+userresources=~/.Xresources
+usermodmap=~/.Xmodmap
+userprofile=~/.xprofile
 if [ -f "$sysresources" ]; then
   /usr/bin/xrdb -merge "$sysresources"
 fi
@@ -49,11 +49,9 @@ waitfor pw-cli info 0
 daemon -rB -P ~/.run -n wireplumber /usr/bin/wireplumber
 daemon -rB -P ~/.run -n pipewire-pulse /usr/bin/pipewire-pulse
 
-daemon -rB -P ~/.run -n xfce4-notifyd /usr/lib64/xfce4/notifyd/xfce4-notifyd
-daemon -rB -P ~/.run -n platform-profile-notifyd ~/.local/bin/platform-profile-notifyd
-
+/usr/lib64/xfce4/notifyd/xfce4-notifyd &
+~/.local/bin/platform-profile-notifyd &
 tint2 &
-
 (
   timeout 10 xdotool search --sync --class tint2
   (
