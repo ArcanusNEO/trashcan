@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 profile=/sys/firmware/acpi/platform_profile
 read -r last_mode <"$profile"
