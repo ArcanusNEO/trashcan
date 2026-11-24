@@ -71,7 +71,7 @@ picom --backend=xrender --no-vsync --unredir-if-possible --use-damage &
   timeout 10 xdotool search --sync --onlyvisible --name 'Mozilla Firefox .' windowunmap %@
 ) &
 (
-  thunderbird --no-remote --new-instance &
+  thunderbird --new-instance &
   timeout 10 xdotool search --sync --onlyvisible --class thunderbird windowminimize %@
 ) &
 alacritty --daemon &
