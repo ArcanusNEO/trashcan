@@ -33,21 +33,21 @@ fi
 
 echo 248 >/sys/class/backlight/intel_backlight/brightness
 
-if xrandr | grep 'HDMI-1 connected'; then
+if xrandr | grep -q 'HDMI-1 connected'; then
   xrandr --output HDMI-1 --primary --mode 2560x1440 --rate 75 --dpi 192 --scale 1.5
   xrandr --output eDP-1 --off
 else
   xrandr --output eDP-1 --primary --mode 2880x1800 --rate 120 --dpi 192
 fi
 
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+  eval "$(dbus-launch --sh-syntax --exit-with-session)"
+fi
+
 daemon -rB -P ~/.run -n pipewire /usr/bin/pipewire
 waitfor pw-cli info 0
 daemon -rB -P ~/.run -n wireplumber /usr/bin/wireplumber
 daemon -rB -P ~/.run -n pipewire-pulse /usr/bin/pipewire-pulse
-
-if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-  eval "$(dbus-launch --sh-syntax --exit-with-session)"
-fi
 
 daemon -rB -P ~/.run -n xfce4-notifyd /usr/lib64/xfce4/notifyd/xfce4-notifyd
 daemon -rB -P ~/.run -n platform-profile-notifyd ~/.local/bin/platform-profile-notifyd
