@@ -1,2 +1,2 @@
 #!/bin/sh
-setsid -f -- nohup -- "$@" </dev/null >/dev/null 2>&1 & disown
+nohup -- setsid -f -- "$@" </dev/null >/dev/null 2>&1 &
