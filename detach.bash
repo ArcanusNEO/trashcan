@@ -1,11 +1,11 @@
-# Bash completion for brun (a transparent command runner).
-# Install as ~/.local/share/bash-completion/completions/brun or source this file.
+# Bash completion for detach (a transparent command runner).
+# Install as ~/.local/share/bash-completion/completions/detach or source this file.
 
-_brun_completion() {
+_detach_completion() {
     COMPREPLY=()
 
     # bash-completion handles both the command name and its own arguments.
-    # Unlike _command, offset 1 does not interpret any arguments as brun flags.
+    # Unlike _command, offset 1 does not interpret any arguments as detach flags.
     if declare -F _command_offset >/dev/null 2>&1; then
         _command_offset 1
         return
@@ -30,4 +30,4 @@ _brun_completion() {
     fi
 }
 
-complete -o bashdefault -o default -F _brun_completion brun
+complete -o bashdefault -o default -F _detach_completion detach
