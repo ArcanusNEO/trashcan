@@ -1,2 +1,3 @@
 #!/bin/sh
-nohup -- setsid -f -- "$@" </dev/null >/dev/null 2>&1 &
+trap '' HUP
+setsid -- "$@" </dev/null >/dev/null 2>&1 &
