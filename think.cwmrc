@@ -130,3 +130,8 @@ bind-key 4S-9 window-movetogroup-9
 
 bind-mouse 4-1 window-move
 bind-mouse 4S-1 window-resize
+bind-mouse 4M-1 window-lower
+bind-mouse 4-2 window-lower
+bind-mouse 4-3 window-close
+bind-mouse 4-4 window-maximize
+bind-mouse 4-5 window-hide
